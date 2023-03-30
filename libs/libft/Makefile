@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 15:07:12 by ale-cont          #+#    #+#              #
-#    Updated: 2023/02/07 16:51:08 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/30 18:24:02 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,21 @@ CFLAGS = -Wall -Wextra -Werror -I .
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
+	@echo "\033[0;34mCompiling libft...\n\033[0m"
 	$(AR) rcs $@ $^
+	@echo "\033[0;32m\033[1mlibft is up to date !\n\033[0m"
 
 %.o : %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	$(RM) $(OBJECTS)
-	$(RM) $(HEADERS).gch
+	@echo "\033[0;31mDeleting libft binaries...\033[0m"
+	@$(RM) $(OBJECTS)
+	@$(RM) $(HEADERS).gch
 
 fclean : clean
-	$(RM) $(NAME)
+	@echo "\033[0;31mDeleting libft executable...\033[0m"
+	@$(RM) $(NAME)
 
 re : fclean
 	$(MAKE) all
