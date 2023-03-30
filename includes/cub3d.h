@@ -15,7 +15,8 @@
 
 /*---------------------------------------*/
 
-# include "../libft/libft.h"
+# include "../libs/libft/libft.h"
+# include "../libs/mlx_linux/mlx.h"
 # include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
