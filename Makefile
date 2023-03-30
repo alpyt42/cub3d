@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/03/30 18:24:22 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/30 18:27:16 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ all:
 	$(MAKE) $(NAME)
 
 $(NAME): $(OBJECTS)
-	@echo "\n\033[0;34mCompiling cub3d...\033[0m"
+	@echo "\n\033[0;34mCompiling cub3d...\n\033[0m"
 	@$(CC) $^ $(CFLAGS) $(MLX) $(LIBFT) -o $@ $(MLX_FLAGS)
 	@echo "\033[0;32m\033[1mcub3d is up to date !\033[0m"
 
