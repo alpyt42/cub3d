@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/03/30 11:16:45 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/30 11:21:03 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,11 @@ PRFLAGS 	=
 
 #--Sources-----------------------------------------------------------------------#
 
+MAIN = main
+PARSING = parse
+
 SOURCES =	$(addsuffix .c, $(addprefix srcs/main/, $(MAIN)))			\
+			$(addsuffix .c, $(addprefix srcs/parsing/, $(PARSING)))			\
 
 #--debug & define flags--------------------------------------------------------#
 
