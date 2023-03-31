@@ -66,4 +66,6 @@ struct s_data
 	char	**map;
 };
 
+int	parse(t_data *d);
+
 #endif

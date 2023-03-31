@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/03/30 18:27:16 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/31 19:35:44 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ MLX_FLAGS 	= 	-L $(MLX_DIR)
 ifeq ($(OS), Darwin)
 MLX_FLAGS 	+= -framework OpenGL -framework AppKit
 else ifeq ($(OS), Linux)
-MLX_FLAGS 	+= -l m -l Xext -l X11 -I $(MLX_DIR)
+MLX_FLAGS 	+= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -I $(MLX_DIR)
 endif
 
 #--Sources-----------------------------------------------------------------------#
@@ -92,12 +92,12 @@ all:
 
 $(NAME): $(OBJECTS)
 	@echo "\n\033[0;34mCompiling cub3d...\n\033[0m"
-	@$(CC) $^ $(CFLAGS) $(MLX) $(LIBFT) -o $@ $(MLX_FLAGS)
+	@$(CC) $^ $(CFLAGS) $(MLX) $(LIBFT) $(MLX_FLAGS) -o $@ 
 	@echo "\033[0;32m\033[1mcub3d is up to date !\033[0m"
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS) $(LIBFT) $(MLX)
 	@ mkdir -p $(dir $@)
-	@$(CC) $(MLX) $(CFLAGS) -c $< -o $@
+	@$(CC) $(MLX) $(CFLAGS) $(MLX_FLAGS) -O3 -c $< -o $@
 	printf "%-95b%b" "[\033[0;95m\033[3mcompiling\033[0m]\t\033[36m$<\033[0m" "\033[32m[✓]\033[0m\n"
 
 #--libs, debugs & bonus--------------------------------------------------------#
