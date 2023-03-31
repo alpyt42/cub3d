@@ -33,6 +33,15 @@
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <math.h>
+
+/*----------------------------------*/
+
+# define FALSE 0
+# define TRUE 1
+
+# define LEFT 0
+# define RIGHT 1
 
 /*-------COLORS---------------------------*/
 

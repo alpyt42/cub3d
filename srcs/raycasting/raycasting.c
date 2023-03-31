@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/31 18:26:22 by ale-cont         ###   ########.fr       */
+/*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
+/*   Updated: 2023/03/31 11:47:29 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	main(int ac, char **av)
-{
-	t_data	d;
-
-	d.ac = ac;
-	d.av = av;
-	if (parse(&d))
-		return (1);
-	return (0);
-}
+int
