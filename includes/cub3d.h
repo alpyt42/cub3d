@@ -48,5 +48,13 @@
 
 /*-------STRUCT---------------------------*/
 
+typedef struct s_data		t_data;
+
+struct s_data
+{
+	int		ac;
+	char	**av;
+	char	**map;
+};
 
 #endif
