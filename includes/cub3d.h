@@ -64,6 +64,8 @@
 /*-------STRUCT---------------------------*/
 
 typedef struct s_data		t_data;
+typedef struct s_data		t_ray;
+typedef struct s_data		t_player;
 
 struct s_data
 {
@@ -72,22 +74,20 @@ struct s_data
 	char	**map;
 };
 
-typedef struct s_ray
+struct s_ray
 {
 	float	x;
 	float	y;
 
 };
 
-typedef struct s_player
+struct s_player
 {
 	float	x;
 	float	y;
 	char	orientation;
 
-}
-
-
+};
 
 int	parse(t_data *d);
 

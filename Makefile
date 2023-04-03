@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/03/31 19:35:44 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/04/03 09:59:38 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,13 @@ endif
 
 MAIN = main
 PARSING = parse
+RAYCASTING = raycasting
+UTILS = utils
 
 SOURCES =	$(addsuffix .c, $(addprefix srcs/main/, $(MAIN)))			\
 			$(addsuffix .c, $(addprefix srcs/parsing/, $(PARSING)))		\
-
+			$(addsuffix .c, $(addprefix srcs/raycasting/, $(RAYCASTING)))		\
+			$(addsuffix .c, $(addprefix srcs/utils/, $(UTILS)))		\
 
 #--debug & define flags--------------------------------------------------------#
 

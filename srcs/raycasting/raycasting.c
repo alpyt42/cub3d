@@ -3,13 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/03/31 11:47:29 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:02:18 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
-int
+#include "cub3d.h"

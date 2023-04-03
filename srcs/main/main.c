@@ -6,11 +6,11 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/31 18:26:22 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:01:07 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 int	main(int ac, char **av)
 {
