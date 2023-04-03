@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:24:14 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/03 16:08:40 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:49:10 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,19 @@ void	*error(char *str)
 	else
 		ft_dprintf(2, "%s\n", str);
 	return (NULL);
+}
+
+void	display_dico(t_list *h_dico)
+{
+	t_dico	*d;
+	void	*tmp;
+
+	tmp = h_dico;
+	while (h_dico)
+	{
+		d = h_dico->content;
+		dprintf(2, "keys : %s && val :%s\n", d->key, d->val);
+		h_dico = h_dico->next;
+	}
+	h_dico = tmp;
 }

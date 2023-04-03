@@ -75,12 +75,12 @@
 # define PLAYER_SPAWN	"NSEW"
 # define FREE_SPACES	"NSEW0"
 # define MALLOC_ERR		"Malloc Error"
-# define NB_IDS			"Too many ids on the same line (PARSING ERROR)"
+# define NB_IDS			"The ids should include a key and a value (PARSING ERROR)"
 # define TOO_MANY_IDS	"Duplicates ids (PARSING ERROR)"
+# define TOO_LOW_IDS	"Not enough identifiers"
 # define PARSING		"PARSING ERROR"
 # define RGB_ERROR		"Invalid RGB input"
 # define IMG_ERROR		"Path to texture not valid or has the wrong extension"
-# define MISSING_IDS	"Some map identifiers are missing"
 # define MAP_MISSING	"Map not found"
 # define INVALID_MAP	"Map content cannot contain empty lines"
 # define INVALID_CHARS	"Map content contains invalid characters"
@@ -139,8 +139,6 @@ struct s_ray
 	int		height;
 	int		draw_start;
 	int 	draw_end;
-
-
 };
 
 struct s_player
@@ -174,6 +172,8 @@ void	*check_map(t_data *d);
 void	start_set(t_data *d, t_mlx *mlx);
 char	*search_dico(char *search, t_data *d);
 t_dico	*init_dico(void);
+void	*add_dico(t_list **h_dico, char *key, char *val);
+void	*check_keys(t_data *d);
 
 /*--raycasting---------------------------*/
 
@@ -184,5 +184,6 @@ void		*error(char *str);
 long long	ft_get_time(void);
 void		*ft_free_data(t_data *d);
 void		free_dico(void *content);
+void		display_dico(t_list *h_dico);
 
 #endif

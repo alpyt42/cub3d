@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/04/03 16:57:15 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/04/03 19:52:43 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ endif
 #--Sources-----------------------------------------------------------------------#
 
 MAIN = main
-PARSING = parse dico get_keys get_map init
+PARSING = parse dico get_keys get_map init check_keys
 RAYCASTING = raycasting
 UTILS = utils free
 

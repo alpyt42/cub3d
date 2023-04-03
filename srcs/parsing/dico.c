@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:32 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 18:24:41 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:48:17 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*search_dico(char *search, t_data *d)
 	return (NULL);
 }
 
-void	*add_dico(t_list *h_dico, char *key, char *val)
+void	*add_dico(t_list **h_dico, char *key, char *val)
 {
 	char	*add_key;
 	char	*add_val;
@@ -50,7 +50,7 @@ void	*add_dico(t_list *h_dico, char *key, char *val)
 		return (error(MALLOC_ERR));
 	node->key = add_key;
 	node->val = add_val;
-	ft_lstadd_back(&h_dico, ft_lstnew(node));
+	ft_lstadd_back(h_dico, ft_lstnew(node));
 	return ("");
 }
 
