@@ -22,6 +22,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <sys/wait.h>
+# include <sys/time.h>
 # include <dirent.h>
 # include <sys/ioctl.h>
 # include <errno.h>
@@ -42,6 +43,11 @@
 
 # define LEFT 0
 # define RIGHT 1
+
+# define N 1
+# define E 2
+# define S 3
+# define W 4
 
 /*-------COLORS---------------------------*/
 
@@ -65,6 +71,23 @@ struct s_data
 	char	**av;
 	char	**map;
 };
+
+typedef struct s_ray
+{
+	float	x;
+	float	y;
+
+};
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	char	orientation;
+
+}
+
+
 
 int	parse(t_data *d);
 
