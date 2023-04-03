@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:08:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 16:11:16 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:18:30 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_dico(void *content)
 		free(dico->val);
 }
 
-void ft_free_data(t_data *d)
+void	*ft_free_data(t_data *d)
 {
 	if (d->dico)
 		ft_lstclear(&d->dico, free_dico);
@@ -44,4 +44,5 @@ void ft_free_data(t_data *d)
 		free_mlx(d->mlx);
 	if (d->fd_map > 0)
 		close(d->fd_map);
+	return (NULL);
 }

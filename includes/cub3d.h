@@ -169,6 +169,7 @@ void	*get_keys(t_data *d);
 void	*check_keys(t_data *d);
 void	*get_map(t_data *d);
 void	*check_map(t_data *d);
+void	start_set(t_data *d, t_mlx *mlx);
 
 /*--raycasting---------------------------*/
 
@@ -177,7 +178,7 @@ void	*check_map(t_data *d);
 
 void		*error(char *str);
 long long	ft_get_time(void);
-void		ft_free_data(t_data *d);
+void		*ft_free_data(t_data *d);
 void		free_dico(void *content);
 
 #endif
