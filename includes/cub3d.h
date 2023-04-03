@@ -105,6 +105,7 @@ typedef struct s_data		t_data;
 typedef struct s_ray		t_ray;
 typedef struct s_dico		t_dico;
 typedef struct s_player		t_player;
+typedef struct s_mlx		t_mlx;
 
 struct s_data
 {
@@ -113,6 +114,7 @@ struct s_data
 	char	**map;
 	int		fd_map;
 	t_list	*dico;
+	t_mlx	*mlx;
 };
 
 struct s_dico
@@ -149,14 +151,20 @@ struct s_player
 	int		mapy;
 	float	planx;
 	float	plany;
-
 	char	orientation;
+};
 
+struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	int		img_width;
+	int		img_height;
 };
 
 /*--parsing---------------------------*/
 
-void		*parse(t_data *d);
+void	*parse(t_data *d);
 void	*get_keys(t_data *d);
 void	*check_keys(t_data *d);
 void	*get_map(t_data *d);
@@ -169,5 +177,7 @@ void	*check_map(t_data *d);
 
 void		*error(char *str);
 long long	ft_get_time(void);
+void		ft_free_data(t_data *d);
+void		free_dico(void *content);
 
 #endif
