@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   display_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 17:30:22 by ale-cont         ###   ########.fr       */
+/*   Created: 2023/04/03 19:03:21 by ale-cont          #+#    #+#             */
+/*   Updated: 2023/04/03 19:10:39 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	start_set(t_data *d, t_mlx *mlx)
+void	display_arr(char **arr, char *info)
 {
-	d->ac = 0;
-	d->av = NULL;
-	d->h_dico = NULL;
-	d->fd_map = -1;
-	d->map = NULL;
-	mlx->mlx = NULL;
-	mlx->win = NULL;
+	int	i;
+
+	i = -1;
+	if (!arr)
+		return ;
+	while (arr[++i])
+		ft_dprintf(1, "%s%s\n", info, arr[i]);
 }

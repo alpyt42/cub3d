@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strchars_i.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 17:30:22 by ale-cont         ###   ########.fr       */
+/*   Created: 2023/04/03 18:54:07 by ale-cont          #+#    #+#             */
+/*   Updated: 2023/04/03 18:54:36 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	start_set(t_data *d, t_mlx *mlx)
+int	ft_strchars_i(const char *s, char *set)
 {
-	d->ac = 0;
-	d->av = NULL;
-	d->h_dico = NULL;
-	d->fd_map = -1;
-	d->map = NULL;
-	mlx->mlx = NULL;
-	mlx->win = NULL;
+	int	i;
+
+	i = 0;
+	if (!s || !s[i])
+		return (-1);
+	while (s[i])
+	{
+		if (ft_strchr(set, s[i]))
+			return (i);
+		i++;
+	}
+	return (-1);
 }

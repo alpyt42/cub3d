@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:43:18 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/25 16:40:22 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:10:58 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ char	*ft_strjoin(char *left_str, char *buf);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	**ft_split_set(char const *s, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
+int		ft_strchars_i(const char *s, char *set);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_itoa(int n);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -89,5 +91,10 @@ int		ft_putstr(char *str, int fd);
 int		ft_putnbr_int(long int nbr, char *base, int fd);
 int		ft_putnbr_uns(unsigned long nbr, char *base, int fd);
 long	ft_atoi_long(char *str);
+int		pos_in_arr(char **arr, char *to_find, char set);
+void	display_arr(char **arr, char *info);
+char	**sort_arr(char **arr);
+char	**ft_replace_in_arr(char **matrix, char **insert, int n, int i);
+char	**ft_append_tab(char **tab, char *line);
 
 #endif

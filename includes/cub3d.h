@@ -74,8 +74,10 @@
 # define VALID_CHARS	"01 NSEW"
 # define PLAYER_SPAWN	"NSEW"
 # define FREE_SPACES	"NSEW0"
-# define MALLOC_ERROR	"Malloc Error"
-# define PARSING_ERROR	"Couldn't parse map identifiers"
+# define MALLOC_ERR		"Malloc Error"
+# define NB_IDS			"Too many ids on the same line (PARSING ERROR)"
+# define TOO_MANY_IDS	"Duplicates ids (PARSING ERROR)"
+# define PARSING		"PARSING ERROR"
 # define RGB_ERROR		"Invalid RGB input"
 # define IMG_ERROR		"Path to texture not valid or has the wrong extension"
 # define MISSING_IDS	"Some map identifiers are missing"
@@ -113,7 +115,7 @@ struct s_data
 	char	**av;
 	char	**map;
 	int		fd_map;
-	t_list	*dico;
+	t_list	*h_dico;
 	t_mlx	*mlx;
 };
 
@@ -170,6 +172,8 @@ void	*check_keys(t_data *d);
 void	*get_map(t_data *d);
 void	*check_map(t_data *d);
 void	start_set(t_data *d, t_mlx *mlx);
+char	*search_dico(char *search, t_data *d);
+t_dico	*init_dico(void);
 
 /*--raycasting---------------------------*/
 

@@ -1,7 +1,12 @@
 EA textures/gold.xpm
  WE textures/shreck_chad_1.xpm
+
+
+
+
+ 
    C 255,255,0
-       SO textures/wood.xpm
+       SO                     textures/wood.xpm
      NO textures/dirt.xpm
 
 F 220,100,0

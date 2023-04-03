@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:08:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 16:18:30 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:30:46 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	free_dico(void *content)
 
 void	*ft_free_data(t_data *d)
 {
-	if (d->dico)
-		ft_lstclear(&d->dico, free_dico);
+	if (d->h_dico)
+		ft_lstclear(&d->h_dico, free_dico);
 	if (d->map)
 		ft_free_arr(d->map);
 	if (d->mlx)

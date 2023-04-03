@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 15:07:12 by ale-cont          #+#    #+#              #
-#    Updated: 2023/03/30 18:24:02 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/04/03 19:08:02 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SOURCES = ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c\
 		ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c\
 		ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_strstr.c\
-		ft_arrdup.c ft_arrlen.c ft_free_arr.c get_next_line.c ft_printf.c ft_opt_printf.c
+		ft_arrdup.c ft_arrlen.c ft_free_arr.c get_next_line.c ft_printf.c ft_opt_printf.c\
+		ft_strchars_i.c ft_split_set.c pos_in_arr.c display_arr.c sort_arr.c ft_replace_in_arr.c\
+		ft_append_tab.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

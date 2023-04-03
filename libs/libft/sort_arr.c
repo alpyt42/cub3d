@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   sort_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 17:30:22 by ale-cont         ###   ########.fr       */
+/*   Created: 2023/04/03 19:04:28 by ale-cont          #+#    #+#             */
+/*   Updated: 2023/04/03 19:04:37 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	start_set(t_data *d, t_mlx *mlx)
+char	**sort_arr(char **arr)
 {
-	d->ac = 0;
-	d->av = NULL;
-	d->h_dico = NULL;
-	d->fd_map = -1;
-	d->map = NULL;
-	mlx->mlx = NULL;
-	mlx->win = NULL;
+	char	**res;
+	char	*tmp;
+	int		i;
+	int		j;
+
+	i = -1;
+	if (!arr)
+		return (NULL);
+	res = ft_arrdup(arr);
+	if (!res)
+		return (NULL);
+	while (arr[++i])
+	{
+		j = i;
+		while (arr[++j])
+		{
+			if (ft_strncmp(res[i], res[j], INT_MAX) > 0)
+			{
+				tmp = res[i];
+				res[i] = res[j];
+				res[j] = tmp;
+			}
+		}
+	}
+	return (res);
 }
