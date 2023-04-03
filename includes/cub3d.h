@@ -61,6 +61,12 @@
 # define S 3
 # define W 4
 
+# define NW 1
+# define NE 2
+# define SW 3
+# define SE 4
+
+
 /*-------COLORS---------------------------*/
 
 # define DEFAULT "\001\033[0;39m\002"
@@ -90,6 +96,17 @@ struct s_ray
 {
 	float	x;
 	float	y;
+	float	raydirx;
+	float	raydiry;	
+	float	sidedistx;
+	float	sidedisty;
+	float	deltadistx;
+	float	deltadisty;
+	float	p_to_wall_dist;
+	int		height;
+	int		draw_start;
+	int 	draw_end;
+
 
 };
 
@@ -97,6 +114,13 @@ struct s_player
 {
 	float	x;
 	float	y;
+	float	dirx;
+	float	diry;	
+	int		mapx;
+	int		mapy;
+	float	planx;
+	float	plany;
+
 	char	orientation;
 
 };
