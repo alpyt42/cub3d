@@ -66,6 +66,26 @@
 # define SW 3
 # define SE 4
 
+/*------error-messages----------------------------*/
+
+# define MLX_INIT_FAIL	"MLX init failed"
+# define MLX_WIN_FAIL	"MLX couldn't create a window"
+# define MLX_IMG_FAIL	"MLX couldn't create an image"
+# define VALID_CHARS	"01 NSEW"
+# define PLAYER_SPAWN	"NSEW"
+# define FREE_SPACES	"NSEW0"
+# define MALLOC_ERROR	"Malloc Error"
+# define PARSING_ERROR	"Couldn't parse map identifiers"
+# define RGB_ERROR		"Invalid RGB input"
+# define IMG_ERROR		"Path to texture not valid or has the wrong extension"
+# define MISSING_IDS	"Some map identifiers are missing"
+# define MAP_MISSING	"Map not found"
+# define INVALID_MAP	"Map content cannot contain empty lines"
+# define INVALID_CHARS	"Map content contains invalid characters"
+# define SPAWN_COUNT_ER	"Map content has to contain (only) 1 player spawn"
+# define MAP_SURR_ER	"The map has to be surrounded by walls (1)"
+# define NB_ARG			"The number of arguments is wrong, provide only one map (*.cub)"
+# define MAP_EXT		"The map must have the .cub extension"
 
 /*-------COLORS---------------------------*/
 
@@ -82,14 +102,23 @@
 /*-------STRUCT---------------------------*/
 
 typedef struct s_data		t_data;
-typedef struct s_data		t_ray;
-typedef struct s_data		t_player;
+typedef struct s_ray		t_ray;
+typedef struct s_dico		t_dico;
+typedef struct s_player		t_player;
 
 struct s_data
 {
 	int		ac;
 	char	**av;
 	char	**map;
+	int		fd_map;
+	t_list	*dico;
+};
+
+struct s_dico
+{
+	char	*key;
+	char	*val;
 };
 
 struct s_ray
@@ -125,6 +154,20 @@ struct s_player
 
 };
 
-int	parse(t_data *d);
+/*--parsing---------------------------*/
+
+void		*parse(t_data *d);
+void	*get_keys(t_data *d);
+void	*check_keys(t_data *d);
+void	*get_map(t_data *d);
+void	*check_map(t_data *d);
+
+/*--raycasting---------------------------*/
+
+
+/*--utils---------------------------*/
+
+void		*error(char *str);
+long long	ft_get_time(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 10:01:07 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:12:48 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	d.ac = ac;
 	d.av = av;
-	if (parse(&d))
+	if (!parse(&d))
 		return (1);
 	return (0);
 }
