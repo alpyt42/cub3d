@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:50:55 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 19:51:37 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/03 20:27:33 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	*get_keys(t_data *d)
 		else
 			break ;
 	}
+	if (gnl)
+		free(gnl);
 	return ("");
 }
