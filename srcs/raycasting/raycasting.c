@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/04 12:43:26 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/04 13:01:39 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int raycasting(t_data *d)
 
     d->player->x = 10;
     d->player->y = 15;
-    d->player->dirx = -1;
-    d->player->diry = 1;
+    d->player->orientation = N;
+    
 
 
 
