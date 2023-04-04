@@ -174,7 +174,7 @@ struct s_player
 	int		mapy;
 	float	planx;
 	float	plany;
-	char	orientation;
+	int		orientation;
 };
 
 struct s_mlx

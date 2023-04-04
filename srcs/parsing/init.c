@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 15:59:57 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:14:01 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,48 +50,49 @@ void	start_set(t_data *d, t_mlx *mlx)
 
 void	start_player_orientation(t_data *d)
 {
-	if (d->player->orientation == 'N')
+		if (d->player->orientation == 'N')
 	{
-		d->player->diry = 0.66;
+		d->player->diry = -1;
 		d->player->dirx = 0;		
 	}
 	if (d->player->orientation == 'S')
 	{
-		d->player->diry = -0.66;
+		d->player->diry = 1;
 		d->player->dirx = 0;
 	}
 	if (d->player->orientation == 'E')
 	{
-		d->player->dirx = 0.66;
+		d->player->dirx = 1;
 		d->player->diry = 0;	
 	}
 	if (d->player->orientation == 'W')
 	{
-		d->player->dirx = -0.66;
+		d->player->dirx = -1;
 		d->player->diry = 0;	
 	}
 }
+
 
 void start_plan_vector(t_data *d)
 {
 	if (d->player->orientation == 'N')
 	{
-		d->player->plany = -1;
+		d->player->plany = 0.66;
 		d->player->planx = 0;		
 	}
 	if (d->player->orientation == 'S')
 	{
-		d->player->plany = 1;
+		d->player->plany = -0.66;
 		d->player->planx = 0;
 	}
 	if (d->player->orientation == 'E')
 	{
-		d->player->planx = 1;
+		d->player->planx = 0.66;
 		d->player->plany = 0;	
 	}
 	if (d->player->orientation == 'W')
 	{
-		d->player->planx = -1;
+		d->player->planx = -0.66;
 		d->player->plany = 0;	
 	}
 }
