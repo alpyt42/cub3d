@@ -56,6 +56,9 @@
 # define LEFT 0
 # define RIGHT 1
 
+# define C 0
+# define F 1
+
 # define N 0
 # define S 1
 # define E 2
@@ -128,6 +131,7 @@ struct s_data
 	t_img		*imgs;
 	t_mlx		*mlx;
 	t_player	player;
+	int			**col;
 };
 
 struct s_dico
@@ -181,6 +185,7 @@ struct s_mlx
 
 /*--parsing---------------------------*/
 
+void	*set_all(t_data *d);
 void	*parse(t_data *d);
 void	*get_keys(t_data *d);
 void	*check_keys(t_data *d);
@@ -192,6 +197,7 @@ t_dico	*init_dico(void);
 void	*add_dico(t_list **h_dico, char *key, char *val);
 void	*check_keys(t_data *d);
 void	start_player_orientation(t_data *d);
+void	*set_color(t_data *d);
 
 /*--raycasting---------------------------*/
 
