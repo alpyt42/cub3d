@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 11:38:13 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:53:10 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static void	*set_all(t_data *d)
 
 static int	start_game(t_data *d, t_mlx *mlx)
 {
-	(void) d;
-	
 	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "CUB3D");
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->size_line, &mlx->endian);
