@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 12:53:10 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:23:30 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,29 @@ static int	start_game(t_data *d, t_mlx *mlx)
 	return (0);
 }
 
+#ifdef ALRIC
+int	main(int ac, char **av)
+{
+	t_data	d;
+	t_mlx	mlx;
+
+	start_set(&d, &mlx);
+	d.mlx = &mlx;
+	mlx.mlx = mlx_init();
+	if (mlx.mlx == NULL)
+	{
+		error(MLX_INIT_FAIL);
+		return (ft_free_data(&d), 1);
+	}
+	d.ac = ac;
+	d.av = av;
+	if (!set_all(&d))
+		return (1);
+	// start_game(&d, &mlx);
+	return (0);
+}
+
+#else
 
 int	main(int ac, char **av)
 {
@@ -53,3 +76,5 @@ int	main(int ac, char **av)
 		return (1);
 	return (0);
 }
+
+#endif

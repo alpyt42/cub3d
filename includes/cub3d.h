@@ -82,8 +82,8 @@
 # define TOO_MANY_IDS	"Duplicates ids (PARSING ERROR)"
 # define TOO_LOW_IDS	"Not enough identifiers"
 # define PARSING		"PARSING ERROR"
-# define RGB_ERROR		"Invalid RGB input"
-# define IMG_ERROR		"Path to texture not valid or has the wrong extension"
+# define COL_ERROR		"Invalid color input"
+# define MLX_IMG_ERR	"The path to the img is not working"
 # define MAP_MISSING	"Map not found"
 # define INVALID_MAP	"Map content cannot contain empty lines"
 # define INVALID_CHARS	"Map content contains invalid characters"
@@ -196,7 +196,7 @@ t_dico	*init_dico(void);
 void	*add_dico(t_list **h_dico, char *key, char *val);
 void	*check_keys(t_data *d);
 void	start_player_orientation(t_data *d);
-void	*set_color(t_data *d);
+void	*set_color_img(t_data *d, int i);
 
 /*--raycasting---------------------------*/
 
@@ -210,5 +210,6 @@ long long	ft_get_time(void);
 void		*ft_free_data(t_data *d);
 void		free_dico(void *content);
 void		display_dico(t_list *h_dico);
+void		*check_arr_type(char **str);
 
 #endif
