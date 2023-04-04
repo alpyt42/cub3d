@@ -6,11 +6,18 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 16:48:52 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/04 09:11:39 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	*set_all(t_data *d)
+{
+	if (!parse(d))
+		return (NULL);
+	return ("");
+}
 
 int	main(int ac, char **av)
 {
@@ -28,7 +35,7 @@ int	main(int ac, char **av)
 	(void)mlx;
 	d.ac = ac;
 	d.av = av;
-	if (!parse(&d))
+	if (!set_all(&d))
 		return (1);
 	return (0);
 }

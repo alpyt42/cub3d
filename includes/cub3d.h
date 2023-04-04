@@ -56,15 +56,15 @@
 # define LEFT 0
 # define RIGHT 1
 
-# define N 1
+# define N 0
+# define S 1
 # define E 2
-# define S 3
-# define W 4
+# define W 3
 
-# define NW 1
-# define NE 2
-# define SW 3
-# define SE 4
+# define NW 0
+# define NE 1
+# define SW 2
+# define SE 3
 
 /*------error-messages----------------------------*/
 
@@ -108,6 +108,15 @@ typedef struct s_ray		t_ray;
 typedef struct s_dico		t_dico;
 typedef struct s_player		t_player;
 typedef struct s_mlx		t_mlx;
+typedef struct s_img		t_img;
+
+struct s_img
+{
+	void	*ptr;
+	int		bpp;
+	int		width;
+	int		height;
+};
 
 struct s_data
 {
@@ -116,6 +125,7 @@ struct s_data
 	char	**map;
 	int		fd_map;
 	t_list	*h_dico;
+	t_img	*imgs;
 	t_mlx	*mlx;
 };
 
