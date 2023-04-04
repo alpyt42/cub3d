@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:24:14 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/03 19:49:10 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:44:17 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,20 @@ void	display_dico(t_list *h_dico)
 		h_dico = h_dico->next;
 	}
 	h_dico = tmp;
+}
+
+void	*check_arr_type(char **str)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (str[++i])
+	{
+		j = -1;
+		while (str[i][++j])
+			if (!ft_isdigit(str[i][j]))
+				return (NULL);
+	}
+	return ("");
 }

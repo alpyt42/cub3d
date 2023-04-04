@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+         #
+#    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/04/04 10:29:15 by amontalb         ###   ########.fr        #
+#    Updated: 2023/04/04 18:19:25 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@
 NAME		=	cub3d
 DEBUG		=	no
 OS			=	$(shell uname)
+USER		=	$(shell echo $USER)
 
 #--includes & libraries--------------------------------------------------------#
 
@@ -40,7 +41,7 @@ endif
 
 #--flags-----------------------------------------------------------------------#
 
-CFLAGS		=	-Wall -Wextra -Werror -I $(LIBFT_DIR) -I $(MLX_DIR) -I $(INC_DIR)
+CFLAGS		=	-Wall -Wextra -Werror -pipe -I $(LIBFT_DIR) -I $(MLX_DIR) -I $(INC_DIR)
 DFLAGS		=	-g3 -fsanitize=address
 MLX_FLAGS 	= 	-L $(MLX_DIR)
 
@@ -74,6 +75,16 @@ ifeq ($(OS), Darwin)
 CFLAGS 		+=	-DMACOS
 endif
 
+#----------------USER----------------------------------------------------------#
+
+ifeq ($(USER), ale-cont)
+CFLAGS 		+=	-DALRIC
+endif
+
+ifeq ($(USER), cuentolinux)
+CFLAGS 		+=	-DALRIC
+endif
+
 #--libs------------------------------------------------------------------------#
 
 LIBFT	=	$(LIBFT_DIR)/libft.a
@@ -93,14 +104,14 @@ all:
 	$(MAKE) libs 
 	$(MAKE) $(NAME)
 
-$(NAME): $(OBJECTS) $(MLX_LIB)
+$(NAME): $(OBJECTS)
 	@echo "\n\033[0;34mCompiling cub3d...\n\033[0m"
-	@$(CC) $^ $(CFLAGS) $(LIBFT) $(MLX_FLAGS) $(MLX_LIB) $(MLX) -o $@ 
+	@$(CC) $^ $(CFLAGS) $(LIBFT) $(MLX_FLAGS) $(MLX) -o $@ 
 	@echo "\033[0;32m\033[1mcub3d is up to date !\033[0m"
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS) $(LIBFT) $(MLX)
 	@ mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(MLX) -O3 -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	printf "%-95b%b" "[\033[0;95m\033[3mcompiling\033[0m]\t\033[36m$<\033[0m" "\033[32m[✓]\033[0m\n"
 
 #--libs, debugs & bonus--------------------------------------------------------#
