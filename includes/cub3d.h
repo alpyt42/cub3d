@@ -36,6 +36,7 @@
 # include <sys/stat.h>
 # include <math.h>
 
+
 /*---------KEY----------------------*/
 
 # define KEY_W 13
@@ -215,6 +216,7 @@ void	start_player_orientation(t_data *d);
 int 	floor_ceiling(t_data *d);
 int 	raycasting(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		start_game(t_data *d, t_mlx *mlx);
 
 /*--utils---------------------------*/
 
