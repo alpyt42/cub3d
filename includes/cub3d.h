@@ -205,7 +205,7 @@ t_dico	*init_dico(void);
 void	*add_dico(t_list **h_dico, char *key, char *val);
 void	*check_keys(t_data *d);
 void	start_player_orientation(t_data *d);
-void	*set_color_img(t_data *d, int i);
+void	*set_color_img(t_data *d);
 void	*set_all(t_data *d);
 
 void	start_plan_vector(t_data *d);

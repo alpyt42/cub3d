@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:51:44 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 18:05:07 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/04 21:14:43 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*fill_colors(t_data *d, int i, char *val)
 {
-	static char	*keys[6] = {"F", "C"};
+	static char	*keys[2] = {"F", "C"};
 	char		**sp_col;
 	int			j;
 
@@ -39,16 +39,22 @@ static void	*fill_colors(t_data *d, int i, char *val)
 
 static void	*fill_ids(t_data *d)
 {
-	static char	*keys[6] = {"NO", "SO", "WE", "EA"};
+	static char	*keys[4] = {"NO", "SO", "WE", "EA"};
 	char		*val;
 	int			i;
 
 	i = -1;
+
 	while (++i <= 3)
 	{
 		val = search_dico(keys[i], d);
-		d->imgs[i].ptr = mlx_xpm_file_to_image(d->mlx->mlx, \
-			val, &d->imgs[i].width, &d->imgs[i].height);
+		if (!val)
+			return (error(TOO_LOW_IDS));
+		printf("val : $%s$\n", val);
+		d->imgs[i].ptr = NULL;
+		if (val != NULL)
+			d->imgs[i].ptr = mlx_xpm_file_to_image(d->mlx->mlx, \
+				val, &d->imgs[i].width, &d->imgs[i].height);
 		if (!d->imgs[i].ptr)
 			return (error(MLX_IMG_ERR));
 	}
@@ -59,7 +65,7 @@ void	*check_keys(t_data *d)
 {
 	if (ft_lstsize(d->h_dico) != 6)
 		return (error(TOO_LOW_IDS));
-	if (!set_color_img(d, -1))
+	if (!set_color_img(d))
 		return (NULL);
 	if (!fill_ids(d))
 		return (NULL);
