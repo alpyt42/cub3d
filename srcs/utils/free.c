@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:08:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 17:30:46 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:04:50 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	*ft_free_data(t_data *d)
 {
 	if (d->h_dico)
 		ft_lstclear(&d->h_dico, free_dico);
-	if (d->map)
-		ft_free_arr(d->map);
+	// if (d->map)
+	// 	ft_free_arr(d->map);
 	if (d->mlx)
 		free_mlx(d->mlx);
 	if (d->fd_map > 0)
