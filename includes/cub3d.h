@@ -130,7 +130,7 @@ struct s_data
 	t_list		*h_dico;
 	t_img		*imgs;
 	t_mlx		*mlx;
-	t_player	player;
+	t_player	*player;
 	int			**col;
 };
 
@@ -185,7 +185,6 @@ struct s_mlx
 
 /*--parsing---------------------------*/
 
-void	*set_all(t_data *d);
 void	*parse(t_data *d);
 void	*get_keys(t_data *d);
 void	*check_keys(t_data *d);

@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 11:36:35 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:43:53 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,24 @@ void	start_set(t_data *d, t_mlx *mlx)
 
 void	start_player_orientation(t_data *d)
 {
-	if (d->player->orientation = 'N')
+	if (d->player->orientation == 'N')
 	{
-		d->player->driry = -1;
-		d->player->drirx = 0;		
+		d->player->diry = -1;
+		d->player->dirx = 0;		
 	}
-	if (d->player->orientation = 'S')
+	if (d->player->orientation == 'S')
 	{
-		d->player->driry = 1;
-		d->player->drirx = 0;
+		d->player->diry = 1;
+		d->player->dirx = 0;
 	}
-	if (d->player->orientation = 'E')
+	if (d->player->orientation == 'E')
 	{
-		d->player->drirx = 1;
-		d->player->driry = 0;	
+		d->player->dirx = 1;
+		d->player->diry = 0;	
 	}
-	if (d->player->orientation = 'W')
+	if (d->player->orientation == 'W')
 	{
-		d->player->drirx = -1;
-		d->player->driry = 0;	
+		d->player->dirx = -1;
+		d->player->diry = 0;	
 	}
 }
