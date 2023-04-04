@@ -120,13 +120,14 @@ struct s_img
 
 struct s_data
 {
-	int		ac;
-	char	**av;
-	char	**map;
-	int		fd_map;
-	t_list	*h_dico;
-	t_img	*imgs;
-	t_mlx	*mlx;
+	int			ac;
+	char		**av;
+	char		**map;
+	int			fd_map;
+	t_list		*h_dico;
+	t_img		*imgs;
+	t_mlx		*mlx;
+	t_player	player;
 };
 
 struct s_dico
@@ -168,8 +169,14 @@ struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	int		img_width;
-	int		img_height;
+	int		*img;
+	int		width;
+	int		height;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	int		bpp;
 };
 
 /*--parsing---------------------------*/
@@ -184,8 +191,11 @@ char	*search_dico(char *search, t_data *d);
 t_dico	*init_dico(void);
 void	*add_dico(t_list **h_dico, char *key, char *val);
 void	*check_keys(t_data *d);
+void	start_player_orientation(t_data *d);
 
 /*--raycasting---------------------------*/
+
+int floor_ceiling(t_data *d);
 
 
 /*--utils---------------------------*/
