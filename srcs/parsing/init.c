@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 11:43:53 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:44:52 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	start_set(t_data *d, t_mlx *mlx)
 	d->map = NULL;
 	mlx->mlx = NULL;
 	mlx->win = NULL;
-	mlx->width = 1920;
-	mlx->height = 1080;
+	mlx->width = 1600;
+	mlx->height = 1000;
 }
 
 
