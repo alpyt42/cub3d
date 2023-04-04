@@ -131,6 +131,7 @@ struct s_data
 	t_img		*imgs;
 	t_mlx		*mlx;
 	t_player	*player;
+	t_ray		*ray;
 	int			**col;
 };
 
@@ -142,8 +143,8 @@ struct s_dico
 
 struct s_ray
 {
-	float	x;
-	float	y;
+
+	float	camerax;
 	float	raydirx;
 	float	raydiry;	
 	float	sidedistx;
@@ -151,9 +152,16 @@ struct s_ray
 	float	deltadistx;
 	float	deltadisty;
 	float	p_to_wall_dist;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
 	int		height;
 	int		draw_start;
 	int 	draw_end;
+	int		orientation_wall;
+	int		side;
+	int		hit;
 };
 
 struct s_player
@@ -198,10 +206,14 @@ void	*check_keys(t_data *d);
 void	start_player_orientation(t_data *d);
 void	*set_color(t_data *d);
 
+void	start_plan_vector(t_data *d);
+void	start_player_orientation(t_data *d);
+
 /*--raycasting---------------------------*/
 
-int floor_ceiling(t_data *d);
-
+int 	floor_ceiling(t_data *d);
+int 	raycasting(t_data *d);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*--utils---------------------------*/
 
