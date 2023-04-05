@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 16:24:36 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:15:06 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*parse(t_data *d)
 		return (NULL);
 	if (!get_map(d))
 		return (NULL);
-	if (!check_map(d))
+	if (!check_map(d, -1, -1, 0))
 		return (NULL);
 	return ("");
 }

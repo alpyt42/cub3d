@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 18:59:20 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:26:14 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 	t_data	d;
 	t_mlx	mlx;
 
+	start_set(&d, &mlx);
 	d.mlx = &mlx;
 	mlx.mlx = mlx_init();
 	if (mlx.mlx == NULL)
@@ -25,7 +26,6 @@ int	main(int ac, char **av)
 		error(MLX_INIT_FAIL);
 		return (ft_free_data(&d), 1);
 	}
-	start_set(&d, &mlx);
 	d.ac = ac;
 	d.av = av;
 	if (!set_all(&d))
@@ -38,6 +38,7 @@ int	main(int ac, char **av)
 	t_data	d;
 	t_mlx	mlx;
 
+	start_set(&d, &mlx);
 	d.mlx = &mlx;
 	mlx.mlx = mlx_init();
 	if (mlx.mlx == NULL)
@@ -46,7 +47,6 @@ int	main(int ac, char **av)
 		return (ft_free_data(&d), 1);
 	}
 	start_game(&d, &mlx);
-	start_set(&d, &mlx);
 	d.ac = ac;
 	d.av = av;
 	if (!set_all(&d))

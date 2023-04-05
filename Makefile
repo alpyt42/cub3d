@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/04/04 18:57:28 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/04/05 13:53:31 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ endif
 MAIN = main
 PARSING = parse dico get_keys get_map init check_keys
 RAYCASTING = raycasting floor_ceiling mlx_init
-UTILS = utils free
+UTILS = utils free utils_bis
 
 SOURCES =	$(addsuffix .c, $(addprefix srcs/main/, $(MAIN)))			\
 			$(addsuffix .c, $(addprefix srcs/parsing/, $(PARSING)))		\

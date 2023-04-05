@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:32 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/03 19:48:17 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:40:46 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*search_dico(char *search, t_data *d)
 	while (d->h_dico)
 	{
 		cmd = d->h_dico->content;
+		// dprintf(2, "cmd[0] : %s, cmd[0] : %ld, search : %ld\n", cmd[0], ft_strlen(cmd[0]), ft_strlen(search));
 		if (!ft_strncmp(cmd[0], search, ft_strlen(search))
 			&& ft_strlen(cmd[0]) == ft_strlen(search))
 		{

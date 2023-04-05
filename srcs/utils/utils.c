@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:24:14 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/04 19:21:44 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:45:54 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,19 @@ void	*check_arr_type(char **str)
 				return (NULL);
 	}
 	return ("");
+}
+
+int	count_char(char *val, char c)
+{
+	int	i;
+	int	len;
+
+	i = -1;
+	len = 0;
+	if (!val)
+		return (0);
+	while (val[++i])
+		if (val[i] == c)
+			len++;
+	return (len);
 }
