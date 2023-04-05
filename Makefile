@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+         #
+#    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/04/05 13:17:39 by amontalb         ###   ########.fr        #
+#    Updated: 2023/04/05 14:39:50 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ endif
 MAIN = main
 PARSING = parse dico get_keys get_map init check_keys
 RAYCASTING = raycasting floor_ceiling mlx_init move
-UTILS = utils free
+UTILS = utils free utils_bis
 
 SOURCES =	$(addsuffix .c, $(addprefix srcs/main/, $(MAIN)))			\
 			$(addsuffix .c, $(addprefix srcs/parsing/, $(PARSING)))		\

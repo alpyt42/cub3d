@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 14:46:00 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:15:15 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	*set_color_img(t_data *d)
 {
-	d->col = (int **)ft_calloc(sizeof(int *), 2);
+	d->col = (int **)malloc(sizeof(int *) * 2);
 	if (!d->col)
 		return (error(MALLOC_ERR));
-	d->col[C] = (int *)ft_calloc(sizeof(int), 3);
-	d->col[F] = (int *)ft_calloc(sizeof(int), 3);
+	d->col[C] = NULL;
+	d->col[F] = NULL;
+	d->col[C] = (int *)malloc(sizeof(int) * 3);
+	d->col[F] = (int *)malloc(sizeof(int) * 3);
 	if (!d->col[C] || !d->col[F])
 		return (error(MALLOC_ERR));
-	d->imgs = ft_calloc(sizeof(t_img), 4);
+	d->imgs = malloc(sizeof(t_img) * 4);
 	if (!d->imgs)
 		return (error(MALLOC_ERR));
 	return ("");
@@ -43,11 +45,8 @@ void	start_set(t_data *d, t_mlx *mlx)
 	d->av = NULL;
 	d->fd_map = -1;
 	d->h_dico = NULL;
-	// d->imgs = NULL;
-	d->player = player;
-	d->player->x = 19;
-    d->player->y = 19;                   /// a enlever apres
-	d->player->orientation = 'W';
+	d->imgs = NULL;
+	d->player = NULL;
 	d->ray = NULL;
 	d->col = NULL;
 	// d->map = NULL;

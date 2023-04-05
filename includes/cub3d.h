@@ -74,7 +74,6 @@
 # define MLX_INIT_FAIL	"MLX init failed"
 # define MLX_WIN_FAIL	"MLX couldn't create a window"
 # define MLX_IMG_FAIL	"MLX couldn't create an image"
-# define VALID_CHARS	"01 NSEW"
 # define PLAYER_SPAWN	"NSEW"
 # define FREE_SPACES	"NSEW0"
 # define MALLOC_ERR		"Malloc Error"
@@ -85,10 +84,10 @@
 # define COL_ERROR		"Invalid color input"
 # define MLX_IMG_ERR	"The path to the img is not working"
 # define MAP_MISSING	"Map not found"
-# define INVALID_MAP	"Map content cannot contain empty lines"
 # define INVALID_CHARS	"Map content contains invalid characters"
-# define SPAWN_COUNT_ER	"Map content has to contain (only) 1 player spawn"
-# define MAP_SURR_ER	"The map has to be surrounded by walls (1)"
+# define COUNT_P		"Map must have (only) one spawn"
+# define MAP_WALL_ERR	"The map has to be surrounded by walls (1)"
+# define MAP_ERR		"The input map has an error (it needs to be in one block)"
 # define NB_ARG			"The number of arguments is wrong, provide only one map (*.cub)"
 # define MAP_EXT		"The map must have the .cub extension"
 
@@ -127,12 +126,12 @@ struct s_data
 	char		**av;
 	char		**map;
 	int			fd_map;
+	int			**col;
 	t_list		*h_dico;
 	t_img		*imgs;
 	t_mlx		*mlx;
 	t_player	*player;
 	t_ray		*ray;
-	int			**col;
 };
 
 struct s_dico
@@ -197,7 +196,7 @@ void	*parse(t_data *d);
 void	*get_keys(t_data *d);
 void	*check_keys(t_data *d);
 void	*get_map(t_data *d);
-void	*check_map(t_data *d);
+void	*check_map(t_data *d, int i, int j, int p);
 void	start_set(t_data *d, t_mlx *mlx);
 char	*search_dico(char *search, t_data *d);
 t_dico	*init_dico(void);
@@ -227,5 +226,7 @@ void		*ft_free_data(t_data *d);
 void		free_dico(void *content);
 void		display_dico(t_list *h_dico);
 void		*check_arr_type(char **str);
+int			count_char(char *val, char c);
+char		*rm_ret_gnl(int fd);
 
 #endif

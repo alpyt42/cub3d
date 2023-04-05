@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:51:44 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 21:14:43 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:25:41 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,42 @@
 
 static void	*fill_colors(t_data *d, int i, char *val)
 {
-	static char	*keys[2] = {"F", "C"};
+	static char	*keys[2] = {"C", "F"};
 	char		**sp_col;
 	int			j;
 
-	j = -1;
 	while (++i <= 1)
 	{
+		j = -1;
 		val = search_dico(keys[i], d);
-		if (val || val[0] || !ft_isdigit(val[0])
-			|| !ft_isdigit(ft_strlen(val) - 1))
+		dprintf(2, "%s : %s\n", keys[i], val);
+		if (!val || !val[0] || count_char(val, ',') != 2
+			|| val[0] == ',' || val[ft_strlen(val) - 1] == ',')
 			return (error(COL_ERROR));
 		sp_col = ft_split(val, ',');
 		if (!sp_col)
 			return (MALLOC_ERR);
 		if (ft_arrlen(sp_col) != 3 || !check_arr_type(sp_col))
 			return (ft_free_arr(sp_col), error(COL_ERROR));
-		else
-			while (++j < 3)
-				d->col[i][j] = ft_atoi(sp_col[j]);
+		while (++j < 3)
+			d->col[i][j] = ft_atoi(sp_col[j]);
 	}
 	return ("");
 }
 
 static void	*fill_ids(t_data *d)
 {
-	static char	*keys[4] = {"NO", "SO", "WE", "EA"};
+	static char	*keys[4] = {"NO", "SO", "EA", "WE"};
 	char		*val;
 	int			i;
 
 	i = -1;
-
 	while (++i <= 3)
 	{
 		val = search_dico(keys[i], d);
 		if (!val)
 			return (error(TOO_LOW_IDS));
-		printf("val : $%s$\n", val);
+		dprintf(2, "%s : %s\n", keys[i], val);
 		d->imgs[i].ptr = NULL;
 		if (val != NULL)
 			d->imgs[i].ptr = mlx_xpm_file_to_image(d->mlx->mlx, \
