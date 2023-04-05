@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/04 20:36:27 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:31:37 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,22 @@ void start_plan_vector(t_data *d)
 {
 	if (d->player->orientation == 'N')
 	{
-		d->player->plany = 0.66;
-		d->player->planx = 0;		
+		d->player->planx = 0.66;		
+		d->player->plany = 0;
 	}
 	if (d->player->orientation == 'S')
 	{
-		d->player->plany = -0.66;
-		d->player->planx = 0;
+		d->player->planx = -0.66;
+		d->player->plany = 0;
 	}
 	if (d->player->orientation == 'E')
 	{
-		d->player->planx = 0.66;
-		d->player->plany = 0;	
+		d->player->planx = 0;
+		d->player->plany = 0.66;	
 	}
 	if (d->player->orientation == 'W')
 	{
-		d->player->planx = -0.66;
-		d->player->plany = 0;	
+		d->player->planx = 0;
+		d->player->plany = -0.66;	
 	}
 }
