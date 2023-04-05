@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 15:15:15 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:16:28 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ void	start_set(t_data *d, t_mlx *mlx)
 	d->av = NULL;
 	d->fd_map = -1;
 	d->h_dico = NULL;
-	d->imgs = NULL;
-	d->player = NULL;
+	// d->imgs = NULL;
+	d->player = player;
+	d->player->x = 19;
+    d->player->y = 19;                   /// a enlever apres
+	d->player->orientation = 'W';
 	d->ray = NULL;
 	d->col = NULL;
 	// d->map = NULL;
