@@ -39,14 +39,13 @@
 
 /*---------KEY----------------------*/
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_DOWN 125
-# define KEY_UP 126
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+
 
 
 /*----------------------------------*/
@@ -216,6 +215,8 @@ int 	floor_ceiling(t_data *d);
 int 	raycasting(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		start_game(t_data *d, t_mlx *mlx);
+
+int	handle_input(int keysym, t_data *d);
 
 /*--utils---------------------------*/
 
