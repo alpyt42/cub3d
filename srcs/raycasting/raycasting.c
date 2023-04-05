@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/05 13:30:51 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:10:51 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,16 +144,8 @@ void draw_wall(t_data *d, int x)
 int raycasting(t_data *d)
 {
     int x;
-    t_player    player;
-
-    
-    d->player = &player;
     x = 0;
-    d->player->x = 10;
-    d->player->y = 15;
-    d->player->orientation = 'W';
-    start_player_orientation(d);
-    start_plan_vector(d);
+    floor_ceiling(d);
     while (x < d->mlx->width)
     {
         // printf("rayon : %d----------------------------------------------\n", x);
@@ -163,7 +155,6 @@ int raycasting(t_data *d)
         size_wall(d);
         draw_wall(d, x);
         x++;
-        free(d->ray);
     }
 
 

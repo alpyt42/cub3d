@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 13:31:37 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:46:00 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,18 @@ void	*set_all(t_data *d)
 
 void	start_set(t_data *d, t_mlx *mlx)
 {
+	t_player    *player;
+
+	player = malloc(sizeof(t_player));
 	d->ac = 0;
 	d->av = NULL;
 	d->fd_map = -1;
 	d->h_dico = NULL;
 	// d->imgs = NULL;
-	d->player = NULL;
+	d->player = player;
+	d->player->x = 19;
+    d->player->y = 19;                   /// a enlever apres
+	d->player->orientation = 'W';
 	d->ray = NULL;
 	d->col = NULL;
 	// d->map = NULL;
@@ -49,6 +55,8 @@ void	start_set(t_data *d, t_mlx *mlx)
 	mlx->win = NULL;
 	mlx->width = 1600;
 	mlx->height = 1000;
+	start_player_orientation(d);
+    start_plan_vector(d);
 }
 
 

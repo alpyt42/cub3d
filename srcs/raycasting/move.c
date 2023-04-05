@@ -6,23 +6,43 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 13:15:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/05 13:40:48 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:12:33 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+
+void    move(t_data *d)
+{
+    mlx_destroy_image(d->mlx->mlx, d->mlx->img);
+    d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
+	raycasting(d);
+    mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
+}
+
+
 int	handle_input(int keysym, t_data *d)
 {
-    (void)d;
-    printf("toto----------------------------\n");
+    
 	if (keysym == KEY_W)
 	{
-        printf("-------------yees--------------\n");
-		exit(0);
+        d->player->x += d->player->dirx;
+        d->player->y += d->player->diry;
+        move (d);
 	}
-	// if (keysym == 13)
-	// 	move_up(d);
+    if (keysym == KEY_S)
+	{
+        d->player->x -= d->player->dirx;
+        d->player->y -= d->player->diry;
+        move (d);
+	}
+	if (keysym == KEY_A)
+	{
+        d->player->x -= d->player->dirx;
+        d->player->y -= d->player->diry;
+        move (d);
+	}
 	// if (keysym == 0)
 	// 	move_left(d);
 	// if (keysym == 1)
