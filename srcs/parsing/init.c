@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 16:48:45 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:33:43 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	d->imgs = NULL;
 	d->player->x = 19;
     d->player->y = 19;                   /// a enlever apres
-	d->player->orientation = 'S';
+	d->player->orientation = 'W';
 	d->ray = NULL;
 	d->col = NULL;
 	d->map = NULL;

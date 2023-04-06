@@ -6,11 +6,18 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:56:24 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 19:25:09 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:33:17 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	finish_game(t_data *d)
+{
+	(void) d;
+	exit(0);
+
+}
 
 void	*start_mlx(t_data *d, t_mlx *mlx)
 {
@@ -23,6 +30,9 @@ void	*start_mlx(t_data *d, t_mlx *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	printf("____________________________\n");
 	printf("win : %p\n", d->mlx->win);
+	//mlx_hook(d->mlx->win, 33, 1L << 17, finish_game, d);
+	mlx_hook(d->mlx->win, 2, 1L << 0, handle_input, d);
+	mlx_loop(mlx->mlx);
 	return ("");
 }
 
@@ -45,14 +55,10 @@ void	set_img_mlx(t_data *d)
 {
 	d->imgs[N].add = mlx_get_data_addr(d->imgs[N].ptr,
 			&(d->imgs[N].bpp), &(d->imgs[N].len_line), &(d->imgs[N].endian));
-	printf("d->imgs[N].bpp : %d\n", d->imgs[N].bpp);
 	d->imgs[N].bpp = d->imgs[N].bpp / 8;
-	printf("d->imgs[N].bpp : %d\n", d->imgs[N].bpp);
 	d->imgs[S].add = mlx_get_data_addr(d->imgs[S].ptr,
 			&(d->imgs[S].bpp), &(d->imgs[S].len_line), &(d->imgs[S].endian));
-	printf("d->imgs[S].bpp : %d\n", d->imgs[S].bpp);
 	d->imgs[S].bpp = d->imgs[S].bpp / 8;
-	printf("d->imgs[S].bpp : %d\n", d->imgs[S].bpp);
 	d->imgs[W].add = mlx_get_data_addr(d->imgs[W].ptr,
 			&(d->imgs[W].bpp), &(d->imgs[W].len_line), &(d->imgs[W].endian));
 	d->imgs[W].bpp = d->imgs[W].bpp / 8;
