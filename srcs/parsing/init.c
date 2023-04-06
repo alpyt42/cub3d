@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 13:25:55 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:37:12 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	start_set(t_data *d, t_mlx *mlx)
 	d->player = player;
 	d->player->x = 19;
     d->player->y = 19;                   /// a enlever apres
-	d->player->orientation = 'S';
+	d->player->orientation = 'W';
 	d->ray = NULL;
 	d->col = NULL;
 	// d->map = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/05 17:13:33 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:12:04 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void move_right(t_data *d)
 void    move(t_data *d)
 {
     mlx_destroy_image(d->mlx->mlx, d->mlx->img);
+    printf("img : %p\n", d->mlx->img);
     d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
 	raycasting(d);
     mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
@@ -38,20 +39,21 @@ void    move(t_data *d)
 int	handle_input(int keysym, t_data *d)
 {
     
-	if (keysym == KEY_W)
+	if (keysym == KEY_W  || keysym == 13)
 	{
         d->player->x += d->player->dirx;
         d->player->y += d->player->diry;
         move (d);
 	}
-    if (keysym == KEY_S)
+    if (keysym == KEY_S || keysym == 1)
 	{
         d->player->x -= d->player->dirx;
         d->player->y -= d->player->diry;
         move (d);
 	}
-	if (keysym == KEY_D)
+	if (keysym == KEY_D || keysym == 2)
 	{
+        printf("test\n");
         move_right(d);
         move (d);
 	}
