@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 14:38:24 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:55:26 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 	d.av = av;
 	if (!set_all(&d))
 		return (1);
+	start_game(&d, &mlx);
 	return (0);
 }
 #else

@@ -61,8 +61,8 @@
 
 # define N 0
 # define S 1
-# define E 2
-# define W 3
+# define W 2
+# define E 3
 
 # define NW 0
 # define NE 1
@@ -118,6 +118,9 @@ struct s_img
 	int		bpp;
 	int		width;
 	int		height;
+	char	*add;
+	int		len_line;
+	int		endian;
 };
 
 struct s_data
@@ -127,6 +130,12 @@ struct s_data
 	char		**map;
 	int			fd_map;
 	int			**col;
+	int			sizex;
+	int			sizey;
+	uint32_t	ceiling;
+	uint32_t	floor;
+	t_img		*imgback;
+	t_img		*imgwall;
 	t_list		*h_dico;
 	t_img		*imgs;
 	t_mlx		*mlx;
@@ -192,22 +201,23 @@ struct s_mlx
 
 /*--parsing---------------------------*/
 
-void	*parse(t_data *d);
-void	*get_keys(t_data *d);
-void	*check_keys(t_data *d);
-void	*get_map(t_data *d);
-void	*check_map(t_data *d, int i, int j, int p);
-void	start_set(t_data *d, t_mlx *mlx);
-char	*search_dico(char *search, t_data *d);
-t_dico	*init_dico(void);
-void	*add_dico(t_list **h_dico, char *key, char *val);
-void	*check_keys(t_data *d);
-void	start_player_orientation(t_data *d);
-void	*set_color_img(t_data *d);
-void	*set_all(t_data *d);
+void		*parse(t_data *d);
+void		*get_keys(t_data *d);
+void		*check_keys(t_data *d);
+void		*get_map(t_data *d);
+void		*check_map(t_data *d, int i, int j, int p);
+void		*start_set(t_data *d, t_mlx *mlx);
+char		*search_dico(char *search, t_data *d);
+t_dico		*init_dico(void);
+void		*add_dico(t_list **h_dico, char *key, char *val);
+void		*check_keys(t_data *d);
+void		start_player_orientation(t_data *d);
+void		*set_color_img(t_data *d);
+void		*set_all(t_data *d);
+void		start_plan_vector(t_data *d);
+void		start_player_orientation(t_data *d);
+uint32_t	trgb_to_hex(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
 
-void	start_plan_vector(t_data *d);
-void	start_player_orientation(t_data *d);
 
 /*--raycasting---------------------------*/
 
@@ -215,8 +225,9 @@ int 	floor_ceiling(t_data *d);
 int 	raycasting(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		start_game(t_data *d, t_mlx *mlx);
-
-int	handle_input(int keysym, t_data *d);
+void	set_img_mlx(t_data *d);
+int		handle_input(int keysym, t_data *d);
+t_img	*create_img(t_mlx *mlx, int	width, int height);
 
 /*--utils---------------------------*/
 
@@ -228,5 +239,6 @@ void		display_dico(t_list *h_dico);
 void		*check_arr_type(char **str);
 int			count_char(char *val, char c);
 char		*rm_ret_gnl(int fd);
+void		get_size_map(t_data *d);
 
 #endif

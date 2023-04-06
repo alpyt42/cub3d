@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:51:44 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 13:25:41 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:46:06 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	*fill_colors(t_data *d, int i, char *val)
 
 static void	*fill_ids(t_data *d)
 {
-	static char	*keys[4] = {"NO", "SO", "EA", "WE"};
+	static char	*keys[4] = {"NO", "SO", "WE", "EA"};
 	char		*val;
 	int			i;
 

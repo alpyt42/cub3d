@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 13:25:55 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:48:45 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,31 @@ void	*set_color_img(t_data *d)
 	return ("");
 }
 
-void	*set_all(t_data *d)
+void	*start_set(t_data *d, t_mlx *mlx)
 {
-	if (!parse(d))
-		return (NULL);
-	return ("");
-}
-
-void	start_set(t_data *d, t_mlx *mlx)
-{
-	t_player    *player;
-
-	player = malloc(sizeof(t_player));
+	d->player = malloc(sizeof(t_player));
+	if (!d->player)
+		return (error(MALLOC_ERR));
 	d->ac = 0;
 	d->av = NULL;
 	d->fd_map = -1;
 	d->h_dico = NULL;
 	d->imgs = NULL;
-	d->player = player;
 	d->player->x = 19;
     d->player->y = 19;                   /// a enlever apres
 	d->player->orientation = 'S';
 	d->ray = NULL;
 	d->col = NULL;
-	// d->map = NULL;
+	d->map = NULL;
+	d->sizex = -1;
+	d->sizey = -1;
 	mlx->mlx = NULL;
 	mlx->win = NULL;
 	mlx->width = 1600;
 	mlx->height = 1000;
 	start_player_orientation(d);
     start_plan_vector(d);
+	return ("");
 }
 
 
