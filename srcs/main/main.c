@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 19:26:30 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:34:53 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (!start_mlx(&d, &mlx))
 		return (1);
+	//mlx_hook(d.mlx->win, 33, 1L << 17, finish_game, d);
 	mlx_hook(d.mlx->win, 2, 1L << 0, handle_input, &d);
 	mlx_loop(mlx.mlx);
 	return (0);
@@ -56,6 +57,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (!start_mlx(&d, &mlx))
 		return (1);
+	//mlx_hook(d.mlx->win, 33, 1L << 17, finish_game, d);
 	mlx_hook(d.mlx->win, 2, 1L << 0, handle_input, &d);
 	mlx_loop(mlx.mlx);
 	return (0);

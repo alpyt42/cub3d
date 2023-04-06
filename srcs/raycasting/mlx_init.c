@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:56:24 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 19:33:17 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:34:58 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void	*start_mlx(t_data *d, t_mlx *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	printf("____________________________\n");
 	printf("win : %p\n", d->mlx->win);
-	//mlx_hook(d->mlx->win, 33, 1L << 17, finish_game, d);
-	mlx_hook(d->mlx->win, 2, 1L << 0, handle_input, d);
-	mlx_loop(mlx->mlx);
 	return ("");
 }
 
