@@ -6,23 +6,11 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:52:30 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 18:29:00 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 11:25:18 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	*check_wall(char **map, int i, int j)
-{
-	if ((i == 0 || i == ft_arrlen(map) - 1)
-		|| (j == 0 || j == (int)ft_strlen(map[i]) - 1)
-		|| ((int)ft_strlen(map[i - 1]) <= j)
-		|| ((int)ft_strlen(map[i + 1]) <= j)
-		|| (map[i - 1][j] == ' ' || map[i][j - 1] == ' ')
-		|| (map[i + 1][j] == ' ' || map[i][j + 1] == ' '))
-			return (NULL);
-	return ("");
-}
 
 void	*check_map(t_data *d, int i, int j, int p)
 {
@@ -36,7 +24,12 @@ void	*check_map(t_data *d, int i, int j, int p)
 			if (ft_strchr("NSWE", d->map[i][j]))
 				p++;
 			if (ft_strchr("NSWE0", d->map[i][j])
-				&& !check_wall(d->map, i, j))
+				&& ((i == 0 || i == ft_arrlen(d->map) - 1)
+				|| (j == 0 || j == (int)ft_strlen(d->map[i]) - 1)
+				|| ((int)ft_strlen(d->map[i - 1]) <= j)
+				|| ((int)ft_strlen(d->map[i + 1]) <= j)
+				|| (d->map[i - 1][j] == ' ' || d->map[i][j - 1] == ' ')
+				|| (d->map[i + 1][j] == ' ' || d->map[i][j + 1] == ' ')))
 				return (error(MAP_WALL_ERR));
 		}
 	}
