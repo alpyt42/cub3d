@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 13:20:03 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:21:49 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	get_pos_player(t_data *d)
 		{
 			if (ft_strchr("NSWE", d->map[i][j]))
 			{
-				d->player->x = i;
-				d->player->y = j;
+				d->player->x = i + 0.5;
+				d->player->y = j + 0.5;
 				d->player->orientation = d->map[i][j];
 			}
 			if (d->map[i][j] == ' ')
