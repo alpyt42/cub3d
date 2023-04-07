@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/06 19:08:13 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:00:53 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void init_step(t_data *d)
     }  
 }
 
+
 void    ray_to_wall(t_data *d)
 {
-    
+    // printf("%c\n", )
     while (d->ray->hit == 0)
     {
         if (d->ray->sidedistx < d->ray->sidedisty)
@@ -53,7 +54,7 @@ void    ray_to_wall(t_data *d)
             d->ray->mapy += d->ray->stepy;
             d->ray->side = 1;
         }
-        if (d->map[d->ray->mapx][d->ray->mapy] > 0)
+        if (d->map[d->ray->mapx][d->ray->mapy] == '1')
             d->ray->hit = 1;
     }
     if (d->ray->side == 0)
@@ -107,7 +108,7 @@ void draw_wall(t_data *d, int x)
         if (d->ray->side == 0 && d->ray->raydirx > 0)
             my_mlx_pixel_put(d, x, y, 0x000000FF);
         else if (d->ray->side == 0)
-            my_mlx_pixel_put(d, x, y, 0xFFFF00);
+            my_mlx_pixel_put(d, x, y, 0x0000FF00);
         else if (d->ray->raydirx > 0)
             my_mlx_pixel_put(d, x, y, 0xFFC0CB);
         else

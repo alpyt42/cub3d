@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 09:37:00 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/04 16:34:42 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 10:59:06 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int floor_ceiling(t_data *d)
 		y = 0;
 		while (y < d->mlx->height / 2)
 		{
-			my_mlx_pixel_put(d, x, y, 0x00FF0000);
-			my_mlx_pixel_put(d, x, y + d->mlx->height / 2, 0x0000FF00);
+			my_mlx_pixel_put(d, x, y, d->ceiling);
+			my_mlx_pixel_put(d, x, y + d->mlx->height / 2, d->floor);
 			y++;	
 		}
 		x++;

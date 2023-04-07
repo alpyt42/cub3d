@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 11:36:23 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:52:17 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ static void	get_pos_player(t_data *d)
 		{
 			if (ft_strchr("NSWE", d->map[i][j]))
 			{
-				d->player->x = j;
-				d->player->y = i;
+				d->player->x = i;
+				d->player->y = j;
+				printf("%d----%d\n", i, j);
 				d->player->orientation = d->map[i][j];
+				printf("%c\n", d->player->orientation);
 				return ;
 			}
 		}
@@ -79,6 +81,8 @@ void	*set_all(t_data *d)
 	d->imgback = create_img(d->mlx, d->mlx->width, d->mlx->height);
 	d->imgwall = create_img(d->mlx, d->mlx->width, d->mlx->height);
 	get_pos_player(d);
+	start_player_orientation(d);
+    start_plan_vector(d);
 	if (!d->imgback || !d->imgwall)
 		return (NULL);
 	set_img_mlx(d);

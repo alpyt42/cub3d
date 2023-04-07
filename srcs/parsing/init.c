@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 11:37:00 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:52:03 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	mlx->win = NULL;
 	mlx->width = 1600;
 	mlx->height = 1000;
-	start_player_orientation(d);
-    start_plan_vector(d);
 	return (NULL); 
 }
 
@@ -63,6 +61,7 @@ void	start_player_orientation(t_data *d)
 	}
 	if (d->player->orientation == 'S')
 	{
+		printf("toto\n");
 		d->player->diry = 1;
 		d->player->dirx = 0;
 	}

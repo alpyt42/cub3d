@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/06 17:12:04 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:37:14 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,80 @@
 
 void move_right(t_data *d)
 {
-    float olddirx;
-    float oldplanx;
+    float   magnitude;
+    float   angle;
 
-    olddirx = d->player->dirx;
-    oldplanx = d->player->planx;
-    d->player->dirx = d->player->dirx * cos(-60) - d->player->diry * sin(-60);
-    d->player->diry = olddirx * sin(-60) + d->player->y * cos(-60);
-    d->player->planx = d->player->planx * cos(-60) - d->player->plany * sin(-60);
-    d->player->plany = oldplanx * sin(-60) + d->player->plany * cos(-60);
+    magnitude = sqrt(pow(d->player->dirx, 2) + pow(d->player->diry, 2));
+    angle = atan2(d->player->diry, d->player->dirx);
+    angle += 3.14 * -25 / 180;
+    d->player->dirx = magnitude * cos(angle);
+    d->player->diry = magnitude * sin(angle);
+    printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
+}
+
+void move_left(t_data *d)
+{
+    float   magnitude;
+    float   angle;
+
+    magnitude = sqrt(pow(d->player->dirx, 2) + pow(d->player->diry, 2));
+    angle = atan2(d->player->diry, d->player->dirx);
+    angle += 3.14 * 25 / 180;
+    d->player->dirx = magnitude * cos(angle);
+    d->player->diry = magnitude * sin(angle);
+    printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
 }
 
 void    move(t_data *d)
 {
-    mlx_destroy_image(d->mlx->mlx, d->mlx->img);
-    printf("img : %p\n", d->mlx->img);
-    d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
+    // mlx_destroy_image(d->mlx->mlx, d->mlx->img);
+    // printf("img : %p\n", d->mlx->img);
+    // d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
 	raycasting(d);
     mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
     d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
 }
 
+int avoid_wall(int keysym, t_data *d)
+{
+    if (keysym == KEY_W)
+    {
+        if (d->map[(int)(d->player->x + d->player->dirx)][(int)(d->player->y + d->player->diry)] == '1')
+        {
+            d->player->x -= d->player->dirx;
+            d->player->y -= d->player->diry;
+            return (1);
+        }
+    }
+    if (keysym == KEY_S)
+    {
+        printf("%c\n", d->map[(int)(d->player->x + d->player->dirx)][(int)(d->player->y + d->player->diry)]);
+        if (d->map[(int)(d->player->x - d->player->dirx)][(int)(d->player->y - d->player->diry)] == '1')
+        {
+            d->player->x += d->player->dirx;
+            d->player->y += d->player->diry;
+            return (1);
+        }
+    }
+    return (0);
+}
 
 int	handle_input(int keysym, t_data *d)
 {
-    
 	if (keysym == KEY_W  || keysym == 13)
 	{
         d->player->x += d->player->dirx;
         d->player->y += d->player->diry;
+        if (avoid_wall(keysym, d))
+            return (0) ;
         move (d);
 	}
     if (keysym == KEY_S || keysym == 1)
 	{
         d->player->x -= d->player->dirx;
         d->player->y -= d->player->diry;
+        if (avoid_wall(keysym, d))
+            return (0) ;
         move (d);
 	}
 	if (keysym == KEY_D || keysym == 2)
@@ -57,11 +96,13 @@ int	handle_input(int keysym, t_data *d)
         move_right(d);
         move (d);
 	}
-	// if (keysym == 0)
-	// 	move_left(d);
-	// if (keysym == 1)
-	// 	move_down(d);
-	// if (keysym == 2)
-	// 	move_right(d);
+	if (keysym == KEY_A)
+    {
+		move_left(d);
+        move (d);
+    }
+	if (keysym == 65307)
+		exit(0);
+	
 	return (0);
 }

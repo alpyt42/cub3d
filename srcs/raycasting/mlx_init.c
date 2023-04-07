@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:56:24 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 08:11:03 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 09:31:53 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	finish_game(t_data *d)
-{
-	(void) d;
-	exit(0);
-
-}
 
 void	*start_mlx(t_data *d, t_mlx *mlx)
 {
