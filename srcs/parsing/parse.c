@@ -6,11 +6,33 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 19:19:35 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:27:49 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	get_pos_player(t_data *d)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (d->map[++i])
+	{
+		j = -1;
+		while (d->map[i][++j])
+		{
+			if (ft_strchr("NSWE", d->map[i][j]))
+			{
+				d->player->dirx = j;
+				d->player->dirx = i;
+				d->player->orientation = d->map[i][j];
+				return ;
+			}
+		}
+	}
+}
 
 uint32_t trgb_to_hex(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
 {
@@ -56,6 +78,7 @@ void	*set_all(t_data *d)
 	// printf("The hexadecimal value of RGBA(%d, %d, %d, %d) is 0x%08X\n", d->col[F][0], d->col[F][1], d->col[F][2], 255, d->floor);
 	d->imgback = create_img(d->mlx, d->mlx->width, d->mlx->height);
 	d->imgwall = create_img(d->mlx, d->mlx->width, d->mlx->height);
+	get_pos_player(d);
 	if (!d->imgback || !d->imgwall)
 		return (NULL);
 	set_img_mlx(d);
