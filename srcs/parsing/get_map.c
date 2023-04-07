@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:52:30 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 11:25:18 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:17:53 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ void	*get_map(t_data *d)
 	free(map);
 	if (!d->map)
 		return (error(MALLOC_ERR));
-	display_arr(d->map, "d->map ");
 	return ("");
 }
