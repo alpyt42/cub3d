@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 18:51:29 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:19:35 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	*set_all(t_data *d)
 	if (!d->imgback || !d->imgwall)
 		return (NULL);
 	set_img_mlx(d);
+	printf("d->imgback->bpp : %d\n", d->imgback->bpp);
 	return ("");
 }

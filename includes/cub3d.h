@@ -224,7 +224,7 @@ uint32_t	trgb_to_hex(unsigned char t, unsigned char r, unsigned char g, unsigned
 int 	floor_ceiling(t_data *d);
 int 	raycasting(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		start_game(t_data *d, t_mlx *mlx);
+void	*start_mlx(t_data *d, t_mlx *mlx);
 void	set_img_mlx(t_data *d);
 int		handle_input(int keysym, t_data *d);
 t_img	*create_img(t_mlx *mlx, int	width, int height);
