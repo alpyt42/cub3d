@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: amontalb <amontalb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 16:37:12 by amontalb         ###   ########.fr       */
-=======
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/06 16:48:45 by ale-cont         ###   ########.fr       */
->>>>>>> d9576dbcbd002f5d2f257a62315e50f9ca4e6e0b
+/*   Updated: 2023/04/06 19:07:53 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +32,8 @@ void	*set_color_img(t_data *d)
 void	*start_set(t_data *d, t_mlx *mlx)
 {
 	d->player = malloc(sizeof(t_player));
-	if (!d->player)
-		return (error(MALLOC_ERR));
+//	if (!d->player)
+//		return (error(MALLOC_ERR));
 	d->ac = 0;
 	d->av = NULL;
 	d->fd_map = -1;
@@ -60,7 +53,7 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	mlx->height = 1000;
 	start_player_orientation(d);
     start_plan_vector(d);
-	return ("");
+	return (NULL); 
 }
 
 
