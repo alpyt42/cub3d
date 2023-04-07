@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/07 11:00:53 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:37:33 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void draw_wall(t_data *d, int x)
             my_mlx_pixel_put(d, x, y, 0x000000FF);
         else if (d->ray->side == 0)
             my_mlx_pixel_put(d, x, y, 0x0000FF00);
-        else if (d->ray->raydirx > 0)
+        else if (d->ray->raydiry > 0)
             my_mlx_pixel_put(d, x, y, 0xFFC0CB);
         else
             my_mlx_pixel_put(d, x, y, 0x800080);
