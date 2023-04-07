@@ -6,35 +6,58 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/07 11:37:14 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:18:00 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void move_right(t_data *d)
+void move_left(t_data *d)
 {
-    float   magnitude;
-    float   angle;
-
-    magnitude = sqrt(pow(d->player->dirx, 2) + pow(d->player->diry, 2));
-    angle = atan2(d->player->diry, d->player->dirx);
-    angle += 3.14 * -25 / 180;
-    d->player->dirx = magnitude * cos(angle);
-    d->player->diry = magnitude * sin(angle);
+    // float   magnitude;
+    // float   angle;
+    
+    // magnitude = sqrt(pow(d->player->dirx, 2) + pow(d->player->diry, 2));
+    // angle = atan2(d->player->diry, d->player->dirx);
+    // angle += 3.14 * -10 / 180;
+    // d->player->dirx = magnitude * cos(angle);
+    // d->player->diry = magnitude * sin(angle);
+    if (d->player->orientation == 'N')
+        d->player->orientation = 'W';
+    else if (d->player->orientation == 'W')
+        d->player->orientation = 'S';
+    else if (d->player->orientation == 'S')
+        d->player->orientation = 'E';
+    else if (d->player->orientation == 'E')
+        d->player->orientation = 'N';
+    start_player_orientation(d);
+    start_plan_vector(d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
 }
 
-void move_left(t_data *d)
+void move_right(t_data *d)
 {
-    float   magnitude;
-    float   angle;
+    // float   magnitude;
+    // float   angle;
 
-    magnitude = sqrt(pow(d->player->dirx, 2) + pow(d->player->diry, 2));
-    angle = atan2(d->player->diry, d->player->dirx);
-    angle += 3.14 * 25 / 180;
-    d->player->dirx = magnitude * cos(angle);
-    d->player->diry = magnitude * sin(angle);
+    // magnitude = sqrt(pow(d->player->dirx, 2) + pow(d->player->diry, 2));
+    // angle = atan2(d->player->diry, d->player->dirx);
+    // angle += 3.14 * 10 / 180;
+    // d->player->dirx = magnitude * cos(angle);
+    // d->player->diry = magnitude * sin(angle);
+    // printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
+    printf("%c\n", d->player->orientation);
+    if (d->player->orientation == 'N')
+        d->player->orientation = 'E';
+    else if (d->player->orientation == 'E')
+        d->player->orientation = 'S';
+    else if (d->player->orientation == 'S')
+        d->player->orientation = 'W';
+    else if (d->player->orientation == 'W')
+        d->player->orientation = 'N';
+    printf("%c\n", d->player->orientation);
+    start_player_orientation(d);
+    start_plan_vector(d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
 }
 
@@ -92,7 +115,6 @@ int	handle_input(int keysym, t_data *d)
 	}
 	if (keysym == KEY_D || keysym == 2)
 	{
-        printf("test\n");
         move_right(d);
         move (d);
 	}

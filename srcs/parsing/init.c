@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 11:52:03 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:13:40 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,13 @@ void	*start_set(t_data *d, t_mlx *mlx)
 
 void	start_player_orientation(t_data *d)
 {
-		if (d->player->orientation == 'E')
+	if (d->player->orientation == 'N')
 	{
 		d->player->diry = -1;
 		d->player->dirx = 0;		
 	}
 	if (d->player->orientation == 'S')
 	{
-		printf("toto\n");
 		d->player->diry = 1;
 		d->player->dirx = 0;
 	}
