@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/07 13:18:00 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:55:20 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int avoid_wall(int keysym, t_data *d)
 {
     if (keysym == KEY_W)
     {
-        if (d->map[(int)(d->player->x + d->player->dirx)][(int)(d->player->y + d->player->diry)] == '1')
+        if (d->map[(int)(d->player->x )][(int)(d->player->y )] == '1')
         {
             d->player->x -= d->player->dirx;
             d->player->y -= d->player->diry;
