@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 11:27:49 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/07 11:36:23 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	get_pos_player(t_data *d)
 		{
 			if (ft_strchr("NSWE", d->map[i][j]))
 			{
-				d->player->dirx = j;
-				d->player->dirx = i;
+				d->player->x = j;
+				d->player->y = i;
 				d->player->orientation = d->map[i][j];
 				return ;
 			}
