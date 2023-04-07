@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:56:24 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 09:31:53 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:38:31 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_img	*create_img(t_mlx *mlx, int	width, int height)
 	if (!img->ptr)
 		return (error(MLX_IMG_FAIL));
 	img->add = mlx_get_data_addr(img->ptr, &img->bpp, &img->len_line, &img->endian);
-	img->bpp = img->bpp / 8;
 	return (img);
 }
 
@@ -46,14 +45,10 @@ void	set_img_mlx(t_data *d)
 {
 	d->imgs[N].add = mlx_get_data_addr(d->imgs[N].ptr,
 			&(d->imgs[N].bpp), &(d->imgs[N].len_line), &(d->imgs[N].endian));
-	d->imgs[N].bpp = d->imgs[N].bpp / 8;
 	d->imgs[S].add = mlx_get_data_addr(d->imgs[S].ptr,
 			&(d->imgs[S].bpp), &(d->imgs[S].len_line), &(d->imgs[S].endian));
-	d->imgs[S].bpp = d->imgs[S].bpp / 8;
 	d->imgs[W].add = mlx_get_data_addr(d->imgs[W].ptr,
 			&(d->imgs[W].bpp), &(d->imgs[W].len_line), &(d->imgs[W].endian));
-	d->imgs[W].bpp = d->imgs[W].bpp / 8;
 	d->imgs[E].add = mlx_get_data_addr(d->imgs[E].ptr,
 			&(d->imgs[E].bpp), &(d->imgs[E].len_line), &(d->imgs[E].endian));
-	d->imgs[E].bpp = d->imgs[E].bpp / 8;
 }
