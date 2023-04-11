@@ -161,6 +161,8 @@ struct s_ray
 	float	deltadistx;
 	float	deltadisty;
 	float	p_to_wall_dist;
+	float	wallx;
+	float	wally;
 	int		mapx;
 	int		mapy;
 	int		stepx;
