@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/11 11:00:45 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:56:47 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,20 @@ void draw_wall(t_data *d, int x)
 {
     int y;
     float x2;
-    int color;
+    char *color;
     // printf("ds : %d\n", d->ray->draw_start);
-    x2 = (d->ray->wally - (d->ray->wally / 1)) * d->imgs[1].width;
     y = d->ray->draw_end;
     while(y <= d->ray->draw_start)
     {
         if (d->ray->side == 0 && d->ray->raydirx > 0)
         {
-            // my_mlx_pixel_put(d, x, y, 0x000000FF);
+            x2 = fmod(d->ray->wally , 1) * d->imgs[1].width;
+            // printf("x1 : %f\n", x1);
+            // my_mlx_pixel_put(d, x, y, 0x000000FF);   
             
-            color = mlx_get_color_value(d->mlx->mlx, (int)(y * d->imgs[1].width + x2));
-            my_mlx_pixel_put(d, x, y * d->imgs[1].width / d->ray->height, color);
+            color = (d->imgs[1].add + (y * d->imgs[1].len_line + (int)x2 * (d->imgs[1].bpp / 8)));
+            dprintf(2, "color : %0x --- len_lign : %d\n", *color, d->imgs[1].len_line);
+            my_mlx_pixel_put(d, x, y, 0x000000FF);
         }
         else if (d->ray->side == 0)
             my_mlx_pixel_put(d, x, y, 0x0000FF00);
