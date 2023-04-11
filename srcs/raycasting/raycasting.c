@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/11 14:44:15 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:07:44 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,15 @@ void draw_wall(t_data *d, int x)
 {
     int y;
     int j = 0;
-    float y2;
-    float x2;
+    int y2;
+    int x2;
     char *color;
     // printf("ds : %d\n", d->ray->draw_start);
     y = d->ray->draw_end;
-    x2 = fmod(d->ray->wally , 1) * d->imgs[2].width;
+    if (d->ray->side == 0)
+        x2 = fmod(d->ray->wally , 1) * d->imgs[2].width;
+    else
+        x2 = fmod(d->ray->wallx , 1) * d->imgs[2].width;
     while(j < d->ray->height)
     {
         if (d->ray->side == 0 && d->ray->raydirx > 0)
@@ -115,20 +118,38 @@ void draw_wall(t_data *d, int x)
     // printf("_______________________________________\n");
             // printf("x1 : %f\n", x1);
             // my_mlx_pixel_put(d, x, y, 0x000000FF);
-            y2 = j * d->imgs[2].height / d->ray->height;
-            // dprintf(2, "ttt :%d\n", y * d->imgs[2].len_line + (int)x2 * (d->imgs[2].bpp / 8));
-            // dprintf(2,"width : %d, height : %d\n", d->imgs[2].width, d->imgs[2].height);
+            y2 = j * d->imgs[0].height / d->ray->height;
+            // dprintf(2, "ttt :%d\n", y * d->imgs[0].len_line + (int)x2 * (d->imgs[0].bpp / 8));
+            // dprintf(2,"width : %d, height : %d\n", d->imgs[0].width, d->imgs[0].height);
             // dprintf(2,"x2 : %f ----y : %d ----  y2 : %f\n", x2, y, y2);
-            color = (d->imgs[2].add + ((int)y2 * d->imgs[2].len_line + (int)x2 * (d->imgs[2].bpp / 8)));
+            color = (d->imgs[0].add + (int)(y2 * d->imgs[0].len_line + x2 * (d->imgs[0].bpp / 8)));
             // dprintf(2, "color : %0x --- len_lign : %d\n", *color, d->imgs[1].len_line);
-            my_mlx_pixel_put(d, x, y, *color);
+            my_mlx_pixel_put(d, x, y, *(int *)color);
         }
         else if (d->ray->side == 0)
-            my_mlx_pixel_put(d, x, y, 0x0000FF00);
+        {
+            y2 = j * d->imgs[1].height / d->ray->height;
+            color = (d->imgs[1].add + (int)(y2 * d->imgs[1].len_line + x2 * (d->imgs[1].bpp / 8)));
+            my_mlx_pixel_put(d, x, y, *(int *)color);
+            
+            // my_mlx_pixel_put(d, x, y, 0x0000FF00);
+        }
         else if (d->ray->raydiry > 0)
-            my_mlx_pixel_put(d, x, y, 0xFFC0CB);
+        {
+            y2 = j * d->imgs[2].height / d->ray->height;
+            color = (d->imgs[2].add + (int)(y2 * d->imgs[2].len_line + x2 * (d->imgs[2].bpp / 8)));
+            my_mlx_pixel_put(d, x, y, *(int *)color);
+            
+            // my_mlx_pixel_put(d, x, y, 0xFFC0CB);
+        }
         else
-            my_mlx_pixel_put(d, x, y, 0x800080);
+        {
+            y2 = j * d->imgs[3].height / d->ray->height;
+            color = (d->imgs[3].add + (int)(y2 * d->imgs[3].len_line + x2 * (d->imgs[3].bpp / 8)));
+            my_mlx_pixel_put(d, x, y, *(int *)color);
+            
+            // my_mlx_pixel_put(d, x, y, 0x800080);
+        }
         y++;
         j++;
     } 
