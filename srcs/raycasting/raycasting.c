@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/11 15:07:44 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:37:54 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,16 @@ void draw_wall(t_data *d, int x)
     char *color;
     // printf("ds : %d\n", d->ray->draw_start);
     y = d->ray->draw_end;
-    if (d->ray->side == 0)
-        x2 = fmod(d->ray->wally , 1) * d->imgs[2].width;
-    else
-        x2 = fmod(d->ray->wallx , 1) * d->imgs[2].width;
+    // if (d->ray->side == 0)
+    //     x2 = fmod(d->ray->wally , 1) * d->imgs[2].width;
+    // else
+    //     x2 = fmod(d->ray->wallx , 1) * d->imgs[2].width;
     while(j < d->ray->height)
     {
         if (d->ray->side == 0 && d->ray->raydirx > 0)
         {
+            x2 = fmod(d->ray->wally , 1) * d->imgs[0].width;
+           
     // printf("_______________________________________\n");
             // printf("x1 : %f\n", x1);
             // my_mlx_pixel_put(d, x, y, 0x000000FF);
@@ -128,6 +130,7 @@ void draw_wall(t_data *d, int x)
         }
         else if (d->ray->side == 0)
         {
+            x2 = fmod(d->ray->wally , 1) * d->imgs[1].width;
             y2 = j * d->imgs[1].height / d->ray->height;
             color = (d->imgs[1].add + (int)(y2 * d->imgs[1].len_line + x2 * (d->imgs[1].bpp / 8)));
             my_mlx_pixel_put(d, x, y, *(int *)color);
@@ -136,6 +139,7 @@ void draw_wall(t_data *d, int x)
         }
         else if (d->ray->raydiry > 0)
         {
+            x2 = fmod(d->ray->wallx , 1) * d->imgs[2].width;
             y2 = j * d->imgs[2].height / d->ray->height;
             color = (d->imgs[2].add + (int)(y2 * d->imgs[2].len_line + x2 * (d->imgs[2].bpp / 8)));
             my_mlx_pixel_put(d, x, y, *(int *)color);
@@ -144,6 +148,7 @@ void draw_wall(t_data *d, int x)
         }
         else
         {
+            x2 = fmod(d->ray->wallx , 1) * d->imgs[3].width;
             y2 = j * d->imgs[3].height / d->ray->height;
             color = (d->imgs[3].add + (int)(y2 * d->imgs[3].len_line + x2 * (d->imgs[3].bpp / 8)));
             my_mlx_pixel_put(d, x, y, *(int *)color);
