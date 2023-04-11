@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 13:13:40 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:59:34 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	*set_color_img(t_data *d)
 void	*start_set(t_data *d, t_mlx *mlx)
 {
 	d->player = malloc(sizeof(t_player));
-//	if (!d->player)
-//		return (error(MALLOC_ERR));
+	if (!d->player)
+		return (error(MALLOC_ERR));
 	d->ac = 0;
 	d->av = NULL;
 	d->fd_map = -1;
@@ -48,16 +48,15 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	mlx->win = NULL;
 	mlx->width = 1600;
 	mlx->height = 1000;
-	return (NULL); 
+	return (NULL);
 }
-
 
 void	start_player_orientation(t_data *d)
 {
 	if (d->player->orientation == 'N')
 	{
 		d->player->diry = -1;
-		d->player->dirx = 0;		
+		d->player->dirx = 0;
 	}
 	if (d->player->orientation == 'S')
 	{
@@ -67,21 +66,20 @@ void	start_player_orientation(t_data *d)
 	if (d->player->orientation == 'E')
 	{
 		d->player->dirx = 1;
-		d->player->diry = 0;	
+		d->player->diry = 0;
 	}
 	if (d->player->orientation == 'W')
 	{
 		d->player->dirx = -1;
-		d->player->diry = 0;	
+		d->player->diry = 0;
 	}
 }
 
-
-void start_plan_vector(t_data *d)
+void	start_plan_vector(t_data *d)
 {
 	if (d->player->orientation == 'N')
 	{
-		d->player->planx = 0.66;		
+		d->player->planx = 0.66;
 		d->player->plany = 0;
 	}
 	if (d->player->orientation == 'S')
@@ -92,11 +90,11 @@ void start_plan_vector(t_data *d)
 	if (d->player->orientation == 'E')
 	{
 		d->player->planx = 0;
-		d->player->plany = 0.66;	
+		d->player->plany = 0.66;
 	}
 	if (d->player->orientation == 'W')
 	{
 		d->player->planx = 0;
-		d->player->plany = -0.66;	
+		d->player->plany = -0.66;
 	}
 }

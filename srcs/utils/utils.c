@@ -6,19 +6,11 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 09:24:14 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/05 12:45:54 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:03:03 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-long long	ft_get_time(void)
-{
-	struct timeval time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
 
 void	*error(char *str)
 {

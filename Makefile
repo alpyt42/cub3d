@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by ale-cont          #+#    #+#              #
-#    Updated: 2023/04/06 16:41:46 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/04/11 15:45:05 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,16 +73,6 @@ endif
 
 ifeq ($(OS), Darwin)
 CFLAGS 		+=	-DMACOS
-endif
-
-#----------------USER----------------------------------------------------------#
-
-ifeq ($(USER), ale-cont)
-CFLAGS 		+=	-DALRIC
-endif
-
-ifeq ($(USER), cuentolinux)
-CFLAGS 		+=	-DALRIC
 endif
 
 #--libs------------------------------------------------------------------------#

@@ -202,6 +202,8 @@ struct s_mlx
 	int		bpp;
 };
 
+int	finish_game(t_data *d);
+
 /*--parsing---------------------------*/
 
 void		*parse(t_data *d);
@@ -219,8 +221,7 @@ void		*set_color_img(t_data *d);
 void		*set_all(t_data *d);
 void		start_plan_vector(t_data *d);
 void		start_player_orientation(t_data *d);
-uint32_t	trgb_to_hex(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
-
+uint32_t	trgb_to_hex(char t, char r, char g, char b);
 
 /*--raycasting---------------------------*/
 
@@ -235,9 +236,7 @@ t_img	*create_img(t_mlx *mlx, int	width, int height);
 /*--utils---------------------------*/
 
 void		*error(char *str);
-long long	ft_get_time(void);
 void		*ft_free_data(t_data *d);
-void		free_dico(void *content);
 void		display_dico(t_list *h_dico);
 void		*check_arr_type(char **str);
 int			count_char(char *val, char c);

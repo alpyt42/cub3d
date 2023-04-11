@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 13:21:49 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:01:19 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	get_pos_player(t_data *d)
 	}
 }
 
-uint32_t trgb_to_hex(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
+uint32_t	trgb_to_hex(char t, char r, char g, char b)
 {
 	uint32_t	value;
 
@@ -52,7 +52,7 @@ void	*parse(t_data *d)
 	if (d->ac != 2 || !(d->av[1]) || !(d->av[1][0]))
 		return (error(NB_ARG));
 	if (!ft_strstr(d->av[1], ".cub")
-	|| ft_strstr(d->av[1], ".cub")[4])
+		|| ft_strstr(d->av[1], ".cub")[4])
 		return (error(MAP_EXT));
 	d->fd_map = open(d->av[1], O_RDONLY);
 	if (d->fd_map == -1)
@@ -80,7 +80,7 @@ void	*set_all(t_data *d)
 	get_pos_player(d);
 	display_arr(d->map, "d->map ");
 	start_player_orientation(d);
-    start_plan_vector(d);
+	start_plan_vector(d);
 	if (!d->imgback || !d->imgwall)
 		return (NULL);
 	set_img_mlx(d);

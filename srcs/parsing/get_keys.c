@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:50:55 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/05 12:35:03 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:01:38 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	*fill_keys(t_data *d, char *gnl, char **keys)
 
 void	*get_keys(t_data *d)
 {
-	char	*gnl;
+	char		*gnl;
 	static char	*keys[6] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
 
 	gnl = get_next_line(d->fd_map);
