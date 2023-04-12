@@ -112,6 +112,7 @@ typedef struct s_dico		t_dico;
 typedef struct s_player		t_player;
 typedef struct s_mlx		t_mlx;
 typedef struct s_img		t_img;
+typedef struct s_map		t_map;
 
 struct s_img
 {
@@ -232,6 +233,7 @@ void	*start_mlx(t_data *d, t_mlx *mlx);
 void	set_img_mlx(t_data *d);
 int		handle_input(int keysym, t_data *d);
 t_img	*create_img(t_mlx *mlx, int	width, int height);
+void	display_map(t_data *d);
 
 /*--utils---------------------------*/
 
