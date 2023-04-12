@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/12 17:04:28 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:35:12 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    move(t_data *d)
 	raycasting(d);
 	display_map(d);
     mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
-    d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
+    // d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
 }
 
 void look_left(t_data *d)
@@ -45,7 +45,9 @@ void look_left(t_data *d)
     start_plan_vector(d);
 	move (d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
+	printf("planx : %f, plany : %f\n", d->player->planx, d->player->plany );
 }
+
 
 void look_right(t_data *d)
 {
@@ -72,6 +74,7 @@ void look_right(t_data *d)
     start_plan_vector(d);
 	move (d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
+	printf("planx : %f, plany : %f\n", d->player->planx, d->player->plany );
 }
 
 
