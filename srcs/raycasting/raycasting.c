@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:47:16 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/11 15:37:54 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:21:15 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void init_step(t_data *d)
     else
     {
         d->ray->stepx = 1;
-        d->ray->sidedistx = ((1 + d->ray->mapx - d->player->x) * d->ray->deltadistx);     
+        d->ray->sidedistx = ((1 + d->ray->mapx - d->player->x) * d->ray->deltadistx);
     }
     if (d->ray->raydiry < 0)
     {
@@ -32,7 +32,7 @@ void init_step(t_data *d)
     else
     {
         d->ray->stepy = 1;
-        d->ray->sidedisty = ((1 + d->ray->mapy - d->player->y) * d->ray->deltadisty);     
+        d->ray->sidedisty = ((1 + d->ray->mapy - d->player->y) * d->ray->deltadisty);
     }  
 }
 
@@ -122,8 +122,11 @@ void draw_wall(t_data *d, int x)
             // my_mlx_pixel_put(d, x, y, 0x000000FF);
             y2 = j * d->imgs[0].height / d->ray->height;
             // dprintf(2, "ttt :%d\n", y * d->imgs[0].len_line + (int)x2 * (d->imgs[0].bpp / 8));
-            // dprintf(2,"width : %d, height : %d\n", d->imgs[0].width, d->imgs[0].height);
-            // dprintf(2,"x2 : %f ----y : %d ----  y2 : %f\n", x2, y, y2);
+			if (x2 < 0)
+			{
+            dprintf(2,"width : %d, height : %d\n", d->imgs[0].width, d->imgs[0].height);
+            dprintf(2,"y : %f --- x2 : %d ----y : %d ----  y2 : %d\n", d->ray->wally, x2, y, y2);
+			}
             color = (d->imgs[0].add + (int)(y2 * d->imgs[0].len_line + x2 * (d->imgs[0].bpp / 8)));
             // dprintf(2, "color : %0x --- len_lign : %d\n", *color, d->imgs[1].len_line);
             my_mlx_pixel_put(d, x, y, *(int *)color);
@@ -133,6 +136,12 @@ void draw_wall(t_data *d, int x)
             x2 = fmod(d->ray->wally , 1) * d->imgs[1].width;
             y2 = j * d->imgs[1].height / d->ray->height;
             color = (d->imgs[1].add + (int)(y2 * d->imgs[1].len_line + x2 * (d->imgs[1].bpp / 8)));
+			
+			if (x2 < 0)
+			{
+            dprintf(2,"width : %d, height : %d\n", d->imgs[0].width, d->imgs[0].height);
+            dprintf(2,"y : %f --- x2 : %d ----y : %d ----  y2 : %d\n", d->ray->wally, x2, y, y2);
+						}
             my_mlx_pixel_put(d, x, y, *(int *)color);
             
             // my_mlx_pixel_put(d, x, y, 0x0000FF00);
@@ -142,6 +151,11 @@ void draw_wall(t_data *d, int x)
             x2 = fmod(d->ray->wallx , 1) * d->imgs[2].width;
             y2 = j * d->imgs[2].height / d->ray->height;
             color = (d->imgs[2].add + (int)(y2 * d->imgs[2].len_line + x2 * (d->imgs[2].bpp / 8)));
+			if (x2 < 0)
+			{
+            dprintf(2,"width : %d, height : %d\n", d->imgs[0].width, d->imgs[0].height);
+            dprintf(2,"x : %f --- x2 : %d ----y : %d ----  y2 : %d\n", d->ray->wallx, x2, y, y2);
+						}
             my_mlx_pixel_put(d, x, y, *(int *)color);
             
             // my_mlx_pixel_put(d, x, y, 0xFFC0CB);
@@ -151,6 +165,11 @@ void draw_wall(t_data *d, int x)
             x2 = fmod(d->ray->wallx , 1) * d->imgs[3].width;
             y2 = j * d->imgs[3].height / d->ray->height;
             color = (d->imgs[3].add + (int)(y2 * d->imgs[3].len_line + x2 * (d->imgs[3].bpp / 8)));
+			if (x2 < 0)
+			{
+            dprintf(2,"width : %d, height : %d\n", d->imgs[0].width, d->imgs[0].height);
+            dprintf(2,"x : %f --- x2 : %d ----y : %d ----  y2 : %d\n", d->ray->wallx, x2, y, y2);
+						}
             my_mlx_pixel_put(d, x, y, *(int *)color);
             
             // my_mlx_pixel_put(d, x, y, 0x800080);
@@ -166,20 +185,22 @@ void    hit_point(t_data *d)
     
     magnitudevector = sqrt(pow(d->ray->raydirx, 2) + pow(d->ray->raydiry, 2));
 
-    
     if (d->ray->side == 0)
     {
-        d->ray->wallx = d->player->x + ((d->ray->sidedistx / magnitudevector) * d->ray->raydirx);
-        d->ray->wally = d->player->y + ((d->ray->sidedistx / magnitudevector) * d->ray->raydiry);
+        d->ray->wallx = d->player->x + ((fabs(d->ray->sidedistx) * d->ray->raydirx / magnitudevector));
+        d->ray->wally = d->player->y + ((fabs(d->ray->sidedistx) * d->ray->raydiry / magnitudevector));
     }
     else
     {
-        d->ray->wallx = d->player->x + ((d->ray->sidedisty / magnitudevector) * d->ray->raydirx);
-        d->ray->wally = d->player->y + ((d->ray->sidedisty / magnitudevector) * d->ray->raydiry);
+        d->ray->wallx = d->player->x + ((fabs(d->ray->sidedisty) * d->ray->raydirx / magnitudevector));
+        d->ray->wally = d->player->y + ((fabs(d->ray->sidedisty) * d->ray->raydiry / magnitudevector));
     }
-    // printf("x : %f --- y : %f\n", d->ray->wallx, d->ray->wally);
+	if (d->ray->wallx < 0)
+		d->ray->wallx *= -1;
+	if (d->ray->wally < 0)
+		d->ray->wally *= -1;
+   		// printf("x : %f --- y : %f\n", d->ray->wallx, d->ray->wally);
 }
-
 
 int raycasting(t_data *d)
 {

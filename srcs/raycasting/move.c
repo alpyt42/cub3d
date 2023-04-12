@@ -6,13 +6,23 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/07 17:55:20 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:17:58 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void move_left(t_data *d)
+void    move(t_data *d)
+{
+    // mlx_destroy_image(d->mlx->mlx, d->mlx->img);
+    // printf("img : %p\n", d->mlx->img);
+    // d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
+	raycasting(d);
+    mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
+    d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
+}
+
+void look_left(t_data *d)
 {
     // float   magnitude;
     // float   angle;
@@ -32,10 +42,11 @@ void move_left(t_data *d)
         d->player->orientation = 'N';
     start_player_orientation(d);
     start_plan_vector(d);
+	move (d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
 }
 
-void move_right(t_data *d)
+void look_right(t_data *d)
 {
     // float   magnitude;
     // float   angle;
@@ -58,18 +69,10 @@ void move_right(t_data *d)
     printf("%c\n", d->player->orientation);
     start_player_orientation(d);
     start_plan_vector(d);
+	move (d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
 }
 
-void    move(t_data *d)
-{
-    // mlx_destroy_image(d->mlx->mlx, d->mlx->img);
-    // printf("img : %p\n", d->mlx->img);
-    // d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
-	raycasting(d);
-    mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
-    d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
-}
 
 int avoid_wall(int keysym, t_data *d)
 {
@@ -95,6 +98,26 @@ int avoid_wall(int keysym, t_data *d)
     return (0);
 }
 
+void	move_left(t_data *d)
+{
+	if (d->map[(int)(d->player->x - d->player->planx)][(int)(d->player->y - d->player->plany)] != '1')
+	{
+		d->player->x -= d->player->planx;
+		d->player->x -= d->player->plany;
+		move(d);
+	}
+}
+
+void	move_right(t_data *d)
+{
+	if (d->map[(int)(d->player->x + d->player->planx)][(int)(d->player->y + d->player->plany)] != '1')
+	{
+		d->player->x += d->player->planx;
+		d->player->x += d->player->plany;
+		move(d);
+	}
+}
+
 int	handle_input(int keysym, t_data *d)
 {
 	if (keysym == KEY_W  || keysym == 13)
@@ -113,18 +136,13 @@ int	handle_input(int keysym, t_data *d)
             return (0) ;
         move (d);
 	}
-	if (keysym == KEY_D || keysym == 2)
-	{
-        move_right(d);
-        move (d);
-	}
+	if (keysym == 65363 )
+        look_right(d);
+	if (keysym == 65361)
+		look_left(d);
 	if (keysym == KEY_A)
-    {
 		move_left(d);
-        move (d);
-    }
-	if (keysym == 65307)
-		exit(0);
-	
+	if (keysym == KEY_D)
+		move_right(d);
 	return (0);
 }
