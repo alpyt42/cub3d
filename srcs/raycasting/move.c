@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/12 16:17:58 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:43:18 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    move(t_data *d)
     // d->mlx->img = mlx_new_image(d->mlx->mlx, d->mlx->width, d->mlx->height);
 	raycasting(d);
     mlx_put_image_to_window(d->mlx->mlx, d->mlx->win, d->mlx->img, 0, 0);
-    d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
+    // d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->size_line, &d->mlx->endian);
 }
 
 void look_left(t_data *d)
@@ -44,7 +44,9 @@ void look_left(t_data *d)
     start_plan_vector(d);
 	move (d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
+	printf("planx : %f, plany : %f\n", d->player->planx, d->player->plany );
 }
+
 
 void look_right(t_data *d)
 {
@@ -71,6 +73,7 @@ void look_right(t_data *d)
     start_plan_vector(d);
 	move (d);
     printf("new dirx : %f, diry : %f\n",  d->player->dirx,  d->player->diry);
+	printf("planx : %f, plany : %f\n", d->player->planx, d->player->plany );
 }
 
 
