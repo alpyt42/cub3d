@@ -226,6 +226,8 @@ uint32_t	trgb_to_hex(char t, char r, char g, char b);
 
 /*--raycasting---------------------------*/
 
+void	move(t_data *d);
+void	draw_wall(t_data *d, int x);
 int 	floor_ceiling(t_data *d);
 int 	raycasting(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -234,6 +236,8 @@ void	set_img_mlx(t_data *d);
 int		handle_input(int keysym, t_data *d);
 t_img	*create_img(t_mlx *mlx, int	width, int height);
 void	display_map(t_data *d);
+void	hit_point(t_data *d);
+
 
 /*--utils---------------------------*/
 
