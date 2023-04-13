@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/12 18:35:12 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:30:34 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,22 +104,35 @@ int avoid_wall(int keysym, t_data *d)
 
 void	move_left(t_data *d)
 {
-	if (d->map[(int)(d->player->x - d->player->planx)][(int)(d->player->y - d->player->plany)] != '1')
-	{
-		d->player->x -= d->player->planx;
-		d->player->x -= d->player->plany;
+	
+		if (d->player->orientation == 'N' && d->map[(int)(d->player->x + 1)][(int)(d->player->y)] != '1')
+        	d->player->x += 1;
+    	else if (d->player->orientation == 'E' && d->map[(int)(d->player->x)][(int)(d->player->y - 1)] != '1')
+      	 	d->player->y -= 1;
+   	 	else if (d->player->orientation == 'S' && d->map[(int)(d->player->x - 1)][(int)(d->player->y)] != '1')
+        	d->player->x -= 1;
+   		 else if (d->player->orientation == 'W' && d->map[(int)(d->player->x)][(int)(d->player->y + 1)] != '1') 
+      		d->player->y += 1;
+		// d->player->x -= d->player->planx;
+		// d->player->x -= d->player->plany;
 		move(d);
-	}
 }
 
 void	move_right(t_data *d)
 {
-	if (d->map[(int)(d->player->x + d->player->planx)][(int)(d->player->y + d->player->plany)] != '1')
-	{
-		d->player->x += d->player->planx;
-		d->player->x += d->player->plany;
+	
+		if (d->player->orientation == 'N' && d->map[(int)(d->player->x - 1)][(int)(d->player->y)] != '1')
+        	d->player->x -= 1;
+    	else if (d->player->orientation == 'E' && d->map[(int)(d->player->x)][(int)(d->player->y + 1)] != '1')
+      	 	d->player->y += 1;
+   	 	else if (d->player->orientation == 'S'&& d->map[(int)(d->player->x + 1)][(int)(d->player->y)] != '1')
+        	d->player->x += 1;
+   		 else if (d->player->orientation == 'W' && d->map[(int)(d->player->x)][(int)(d->player->y - 1)] != '1')
+      		d->player->y -= 1;
+		// d->player->x += d->player->planx;
+		// d->player->x += d->player->plany;
 		move(d);
-	}
+
 }
 
 int	handle_input(int keysym, t_data *d)
