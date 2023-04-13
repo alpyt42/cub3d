@@ -222,7 +222,6 @@ void		*set_color_img(t_data *d);
 void		*set_all(t_data *d);
 void		start_plan_vector(t_data *d);
 void		start_player_orientation(t_data *d);
-uint32_t	trgb_to_hex(char t, char r, char g, char b);
 
 /*--raycasting---------------------------*/
 
