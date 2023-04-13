@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:35:39 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 14:03:25 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:54:10 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,25 @@ static	void printmap(t_data *d, int x, int y, int color)
 		{
 			pixel_x = x * 10 + dx;
 			pixel_y = y * 10 + dy;
-			my_mlx_pixel_put(d, pixel_x, pixel_y, color);
+			my_mlx_pixel_put(d, pixel_x + 22, pixel_y + 22, color);
 		}
 	}
 }
 
-static void	dis_map(t_data *d, int color, int zoomed[2], int pos[2])
+static void	dis_map(t_data *d, int zoomed[2], int pos[2], int size)
 {
 	int tile_x;
 	int tile_y;
 	int x;
 	int y;
+	int	color;
 
 	y = -1;
-	while (++y < 26)
+	color = 0;
+	while (++y < size)
 	{
 		x = -1;
-		while (++x < 26)
+		while (++x < size)
 		{
 			tile_x = zoomed[0] + x;
 			tile_y = zoomed[1] + y;
@@ -62,22 +64,27 @@ static void	dis_map(t_data *d, int color, int zoomed[2], int pos[2])
 
 void	display_map(t_data *d)
 {
-	int color;
 	int zoomed[2];
 	int pos[2];
+	int	size;
 
 	pos[0] = d->player->y;
 	pos[1] = d->player->x;
-	zoomed[0] = pos[0] - 13;
-	zoomed[1] = pos[1] - 13;
+	if (d->sizex >  40 && d->sizey > 40)
+		size = 26;
+	else if (d->sizex <= d->sizey)
+		size = d->sizex;
+	else if (d->sizey < d->sizex)
+		size = d->sizey;
+	zoomed[0] = pos[0] - size / 2;
+	zoomed[1] = pos[1] - size / 2;
 	if (zoomed[0] < 0)
 		zoomed[0] = 0;
 	if (zoomed[1] < 0)
 		zoomed[1] = 0;
-	if (zoomed[0] > d->sizex - 26)
-		zoomed[0] = d->sizex - 26;
-	if (zoomed[1] > d->sizey - 26)
-		zoomed[1] = d->sizey - 26;
-	color = 0;
-	dis_map(d, color, zoomed, pos);
+	if (zoomed[0] > d->sizex - size)
+		zoomed[0] = d->sizex - size;
+	if (zoomed[1] > d->sizey - size)
+		zoomed[1] = d->sizey - size;
+	dis_map(d, zoomed, pos, size);
 }
