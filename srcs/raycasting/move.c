@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/13 13:42:25 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:34:25 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int avoid_wall(int keysym, t_data *d)
     }
     if (keysym == KEY_S)
     {
-        printf("%c\n", d->map[(int)(d->player->x + d->player->dirx)][(int)(d->player->y + d->player->diry)]);
-        if (d->map[(int)(d->player->x - d->player->dirx)][(int)(d->player->y - d->player->diry)] == '1')
+        // printf("%c\n", d->map[(int)(d->player->x + d->player->dirx)][(int)(d->player->y + d->player->diry)]);
+        if (d->map[(int)(d->player->x)][(int)(d->player->y)] == '1')
         {
             d->player->x += d->player->dirx;
             d->player->y += d->player->diry;
@@ -104,7 +104,6 @@ int avoid_wall(int keysym, t_data *d)
 
 void	move_left(t_data *d)
 {
-	
 		if (d->player->orientation == 'N' && d->map[(int)(d->player->x + 1)][(int)(d->player->y)] != '1')
 		{
         	d->player->x += 1;
@@ -132,7 +131,7 @@ void	move_left(t_data *d)
 
 void	move_right(t_data *d)
 {
-	
+		
 		if (d->player->orientation == 'N' && d->map[(int)(d->player->x - 1)][(int)(d->player->y)] != '1')
 		{
         	d->player->x -= 1;
