@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:11:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/13 13:30:34 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:42:25 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,32 +106,55 @@ void	move_left(t_data *d)
 {
 	
 		if (d->player->orientation == 'N' && d->map[(int)(d->player->x + 1)][(int)(d->player->y)] != '1')
+		{
         	d->player->x += 1;
+			move(d);
+		}
     	else if (d->player->orientation == 'E' && d->map[(int)(d->player->x)][(int)(d->player->y - 1)] != '1')
+		{
       	 	d->player->y -= 1;
+			move(d);
+		}
    	 	else if (d->player->orientation == 'S' && d->map[(int)(d->player->x - 1)][(int)(d->player->y)] != '1')
+		{
         	d->player->x -= 1;
-   		 else if (d->player->orientation == 'W' && d->map[(int)(d->player->x)][(int)(d->player->y + 1)] != '1') 
+			move(d);
+		}
+   		 else if (d->player->orientation == 'W' && d->map[(int)(d->player->x)][(int)(d->player->y + 1)] != '1')
+		{
       		d->player->y += 1;
+			move(d);
+		}
 		// d->player->x -= d->player->planx;
 		// d->player->x -= d->player->plany;
-		move(d);
+
 }
 
 void	move_right(t_data *d)
 {
 	
 		if (d->player->orientation == 'N' && d->map[(int)(d->player->x - 1)][(int)(d->player->y)] != '1')
+		{
         	d->player->x -= 1;
+			move(d);
+		}
     	else if (d->player->orientation == 'E' && d->map[(int)(d->player->x)][(int)(d->player->y + 1)] != '1')
+		{
       	 	d->player->y += 1;
+			move(d);
+		}
    	 	else if (d->player->orientation == 'S'&& d->map[(int)(d->player->x + 1)][(int)(d->player->y)] != '1')
+		{
         	d->player->x += 1;
+			move(d);
+		}
    		 else if (d->player->orientation == 'W' && d->map[(int)(d->player->x)][(int)(d->player->y - 1)] != '1')
+		{
       		d->player->y -= 1;
+			move(d);
+		}
 		// d->player->x += d->player->planx;
 		// d->player->x += d->player->plany;
-		move(d);
 
 }
 
