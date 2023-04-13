@@ -238,7 +238,7 @@ void	display_map(t_data *d);
 /*--utils---------------------------*/
 
 void		*error(char *str);
-void		*ft_free_data(t_data *d);
+int			ft_free_data(t_data *d);
 void		display_dico(t_list *h_dico);
 void		*check_arr_type(char **str);
 int			count_char(char *val, char c);

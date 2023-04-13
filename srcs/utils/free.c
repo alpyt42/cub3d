@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:08:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/11 17:29:09 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:41:26 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,36 @@ static void	free_dico(void *content)
 		free(dico->key);
 	if (dico->val)
 		free(dico->val);
+	free(dico);
 }
 
 static void	free_imgs(t_data *d)
 {
 	int	i;
 
-	i = 0;
-	while (i < 4)
-	{
-		if (d->imgs[i].ptr)
-			mlx_destroy_image(d->mlx->mlx, d->imgs[i].ptr);
-		// if (d->imgs[i].add)
-		// 	mlx_destroy_image(d->mlx->mlx, d->imgs[i].add);
-		// free(d->imgs[i++]);
-	}
+	i = -1;
+	while (++i < 4)
+		mlx_destroy_image(d->mlx->mlx, d->imgs[i].ptr);
 	free(d->imgs);
 	if (d->imgback)
 	{
-		mlx_destroy_image(d->mlx->mlx, d->imgback->add);
+		mlx_destroy_image(d->mlx->mlx, d->imgback->ptr);
 		free(d->imgback);
 	}
 	if (d->imgwall)
 	{
-		mlx_destroy_image(d->mlx->mlx, d->imgwall->add);
+		mlx_destroy_image(d->mlx->mlx, d->imgwall->ptr);
 		free(d->imgwall);
 	}
 }
 
-void	*ft_free_data(t_data *d)
+int	ft_free_data(t_data *d)
 {
 	if (d->h_dico)
+	{
 		ft_lstclear(&d->h_dico, free_dico);
+		free(d->h_dico);
+	}
 	if (d->map)
 		ft_free_arr(d->map);
 	if (d->imgs)
@@ -80,5 +78,7 @@ void	*ft_free_data(t_data *d)
 		close(d->fd_map);
 	if (d->mlx)
 		free_mlx(d->mlx);
-	return (NULL);
+	if (d->player)
+		free(d->player);
+	exit(0);
 }

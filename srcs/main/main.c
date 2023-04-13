@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 13:53:59 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:26:50 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	finish_game(t_data *d)
-{
-	ft_free_data(d);
-	exit(0);
-}
 
 int	main(int ac, char **av)
 {
@@ -38,7 +32,7 @@ int	main(int ac, char **av)
 	if (!start_mlx(&d, &mlx))
 		return (1);
 	mlx_hook(d.mlx->win, 2, 1L << 0, handle_input, &d);
-	mlx_hook(d.mlx->win, 17, 1L << 0, finish_game, &d);
+	mlx_hook(d.mlx->win, 17, 1L << 0, ft_free_data, &d);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
