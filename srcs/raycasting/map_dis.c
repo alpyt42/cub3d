@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:35:39 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 15:58:41 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:10:44 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static void draw_arrow_player(t_data *d, int x, int y, int color)
 	int pixel_y;
 	int arrow_size;
 
-	dy = -1;
+	dy = 1;
 	arrow_size = 5;
-	while (++dy < 10)
+	while (++dy < 8)
 	{
-		dx = -1;
-		while (++dx < 10)
+		dx = 1;
+		while (++dx < 8)
 		{
 			pixel_x = x * 10 + dx + 22;
 			pixel_y = y * 10 + dy + 22;
@@ -84,10 +84,10 @@ static void	dis_map(t_data *d, int zoomed[2], int pos[2], int size)
 			tile_y = zoomed[1] + y;
 			if (!d->map[tile_y][tile_x] || d->map[tile_y][tile_x] == '1')
 				color = 0x000000;
-			else if (d->map[tile_y][tile_x] == ' ')
-				color = 0x000000;
 			else if (tile_x == pos[0] && tile_y == pos[1])
 				color = 0xFF0000;
+			else if (ft_strchr("NSWE ", d->map[tile_y][tile_x]))
+				color = 0x888888;
 			else if (d->map[tile_y][tile_x] == '0')
 				color = 0x888888;
 			printmap(d, x, y, color);
