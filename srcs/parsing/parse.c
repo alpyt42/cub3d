@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 17:45:12 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:53:11 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ static void	get_pos_player(t_data *d)
 
 static uint32_t	rgb_to_hex(int r, int g, int b)
 {
-    uint32_t hex = 0;
-    hex |= r << 16;
-    hex |= g << 8;
-    hex |= b;
-    return (hex);
-}
+	uint32_t	hex;
 
+	hex = 0;
+	hex |= r << 16;
+	hex |= g << 8;
+	hex |= b;
+	return (hex);
+}
 
 void	*parse(t_data *d)
 {

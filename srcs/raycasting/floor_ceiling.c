@@ -41,5 +41,5 @@ int	floor_ceiling(t_data *d)
 		}
 		x++;
 	}
-	return(0);
+	return (0);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   cub3d.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 /*---------------------------------------*/
 
@@ -36,8 +36,7 @@
 # include <sys/stat.h>
 # include <math.h>
 
-
-/*---------KEY----------------------*/
+/*-----------KEY----------------------*/
 
 # define KEY_W 119
 # define KEY_A 97
@@ -47,9 +46,7 @@
 # define KEY_RIGHT 65363
 # define ESCAPE 65307
 
-
-
-/*----------------------------------*/
+/*------------------------------------*/
 
 # define FALSE 0
 # define TRUE 1
@@ -78,7 +75,7 @@
 # define PLAYER_SPAWN	"NSEW"
 # define FREE_SPACES	"NSEW0"
 # define MALLOC_ERR		"Malloc Error"
-# define NB_IDS			"The ids should include a key and a value (PARSING ERROR)"
+# define NB_IDS			"The ids must have key + value (PARSING ERROR)"
 # define TOO_MANY_IDS	"Duplicates ids (PARSING ERROR)"
 # define TOO_LOW_IDS	"Not enough identifiers"
 # define PARSING		"PARSING ERROR"
@@ -88,8 +85,8 @@
 # define INVALID_CHARS	"Map content contains invalid characters"
 # define COUNT_P		"Map must have (only) one spawn"
 # define MAP_WALL_ERR	"The map has to be surrounded by walls (1)"
-# define MAP_ERR		"The input map has an error (it needs to be in one block)"
-# define NB_ARG			"The number of arguments is wrong, provide only one map (*.cub)"
+# define MAP_ERR		"The error in map (it needs to be in one block)"
+# define NB_ARG			"The number of arguments is wrong : one map (*.cub)"
 # define MAP_EXT		"The map must have the .cub extension"
 
 /*-------COLORS---------------------------*/
@@ -106,13 +103,13 @@
 
 /*-------STRUCT---------------------------*/
 
-typedef struct s_data		t_data;
-typedef struct s_ray		t_ray;
-typedef struct s_dico		t_dico;
-typedef struct s_player		t_player;
-typedef struct s_mlx		t_mlx;
-typedef struct s_img		t_img;
-typedef struct s_map		t_map;
+typedef struct s_data	t_data;
+typedef struct s_ray	t_ray;
+typedef struct s_dico	t_dico;
+typedef struct s_player	t_player;
+typedef struct s_mlx	t_mlx;
+typedef struct s_img	t_img;
+typedef struct s_map	t_map;
 
 struct s_img
 {
@@ -153,10 +150,9 @@ struct s_dico
 
 struct s_ray
 {
-
 	float	camerax;
 	float	raydirx;
-	float	raydiry;	
+	float	raydiry;
 	float	sidedistx;
 	float	sidedisty;
 	float	deltadistx;
@@ -170,7 +166,7 @@ struct s_ray
 	int		stepy;
 	int		height;
 	int		draw_start;
-	int 	draw_end;
+	int		draw_end;
 	int		orientation_wall;
 	int		side;
 	int		hit;
@@ -203,9 +199,7 @@ struct s_mlx
 	int		bpp;
 };
 
-int	finish_game(t_data *d);
-
-/*--parsing---------------------------*/
+/*--parsing-----------------------------*/
 
 void		*parse(t_data *d);
 void		*get_keys(t_data *d);
@@ -225,20 +219,19 @@ void		start_player_orientation(t_data *d);
 
 /*--raycasting---------------------------*/
 
-void	move(t_data *d);
-void	draw_wall(t_data *d, int x);
-int 	floor_ceiling(t_data *d);
-int 	raycasting(t_data *d);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	*start_mlx(t_data *d, t_mlx *mlx);
-void	set_img_mlx(t_data *d);
-int		handle_input(int keysym, t_data *d);
-t_img	*create_img(t_mlx *mlx, int	width, int height);
-void	display_map(t_data *d);
-void	hit_point(t_data *d);
+void		move(t_data *d);
+void		draw_wall(t_data *d, int x);
+int			floor_ceiling(t_data *d);
+int			raycasting(t_data *d);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		*start_mlx(t_data *d, t_mlx *mlx);
+void		set_img_mlx(t_data *d);
+int			handle_input(int keysym, t_data *d);
+t_img		*create_img(t_mlx *mlx, int width, int height);
+void		display_map(t_data *d);
+void		hit_point(t_data *d);
 
-
-/*--utils---------------------------*/
+/*--utils------------------------------*/
 
 void		*error(char *str);
 int			ft_free_data(t_data *d);
