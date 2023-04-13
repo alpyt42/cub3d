@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:56:24 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/12 16:43:27 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:41:18 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 void	*start_mlx(t_data *d, t_mlx *mlx)
 {
@@ -19,16 +18,15 @@ void	*start_mlx(t_data *d, t_mlx *mlx)
 	if (!mlx->win)
 		return (error(MLX_WIN_FAIL));
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
-	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->size_line, &mlx->endian);
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp,
+			&mlx->size_line, &mlx->endian);
 	raycasting(d);
 	display_map(d);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
-	printf("____________________________\n");
-	printf("win : %p\n", d->mlx->win);
 	return ("");
 }
 
-t_img	*create_img(t_mlx *mlx, int	width, int height)
+t_img	*create_img(t_mlx *mlx, int width, int height)
 {
 	t_img	*img;
 
@@ -38,7 +36,8 @@ t_img	*create_img(t_mlx *mlx, int	width, int height)
 	img->ptr = mlx_new_image(mlx->mlx, width, height);
 	if (!img->ptr)
 		return (error(MLX_IMG_FAIL));
-	img->add = mlx_get_data_addr(img->ptr, &img->bpp, &img->len_line, &img->endian);
+	img->add = mlx_get_data_addr(img->ptr, &img->bpp,
+			&img->len_line, &img->endian);
 	return (img);
 }
 
