@@ -35,8 +35,8 @@ int	floor_ceiling(t_data *d)
 		y = 0;
 		while (y < d->mlx->height / 2)
 		{
-			my_mlx_pixel_put(d, x, y, d->floor);
-			my_mlx_pixel_put(d, x, y + d->mlx->height / 2, d->ceiling);
+			my_mlx_pixel_put(d, x, y, d->ceiling);
+			my_mlx_pixel_put(d, x, y + d->mlx->height / 2, d->floor);
 			y++;
 		}
 		x++;

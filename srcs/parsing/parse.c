@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/12 10:18:03 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:45:12 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,15 @@ static void	get_pos_player(t_data *d)
 	}
 }
 
-uint32_t	trgb_to_hex(char t, char r, char g, char b)
+static uint32_t	rgb_to_hex(int r, int g, int b)
 {
-	uint32_t	value;
-
-	value = 0;
-	value |= (t << 24);
-	value |= (r << 16);
-	value |= (g << 8);
-	value |= b;
-	return (value);
+    uint32_t hex = 0;
+    hex |= r << 16;
+    hex |= g << 8;
+    hex |= b;
+    return (hex);
 }
+
 
 void	*parse(t_data *d)
 {
@@ -73,17 +71,15 @@ void	*set_all(t_data *d)
 	if (!parse(d))
 		return (NULL);
 	get_size_map(d);
-	d->floor = trgb_to_hex(255, d->col[F][0], d->col[F][1], d->col[F][2]);
-	d->ceiling = trgb_to_hex(255, d->col[C][0], d->col[C][1], d->col[C][2]);
+	d->floor = rgb_to_hex(d->col[F][0], d->col[F][1], d->col[F][2]);
+	d->ceiling = rgb_to_hex(d->col[C][0], d->col[C][1], d->col[C][2]);
 	d->imgback = create_img(d->mlx, d->mlx->width, d->mlx->height);
 	d->imgwall = create_img(d->mlx, d->mlx->width, d->mlx->height);
 	get_pos_player(d);
-	// display_arr(d->map, "d->map ");
 	start_player_orientation(d);
 	start_plan_vector(d);
 	if (!d->imgback || !d->imgwall)
 		return (NULL);
 	set_img_mlx(d);
-	// printf("d->imgback->bpp : %d\n", d->imgback->bpp);
 	return ("");
 }
