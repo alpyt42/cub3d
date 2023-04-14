@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:26:52 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/13 17:44:41 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:41:33 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void	move_left(t_data *d)
 
 int	handle_input(int keysym, t_data *d)
 {
+	if (keysym == 65307)
+		exit (ft_free_data(d));
 	if (keysym == KEY_W && d->map[(int)(d->player->x + d->player->dirx)]
 		[(int)(d->player->y + d->player->diry)] != '1')
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 16:08:00 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:49:40 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,18 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	d->ac = 0;
 	d->av = NULL;
 	d->fd_map = -1;
-	d->h_dico = NULL;
-	d->imgs = NULL;
-	d->ray = NULL;
 	d->col = NULL;
 	d->map = NULL;
 	d->sizex = -1;
 	d->sizey = -1;
+	d->imgback = NULL;
+	d->imgwall = NULL;
+	d->h_dico = NULL;
+	d->imgs = NULL;
+	d->mlx = NULL;
+	d->ray = NULL;
 	mlx->mlx = NULL;
+	mlx->img = NULL;
 	mlx->win = NULL;
 	mlx->width = 1600;
 	mlx->height = 1000;
