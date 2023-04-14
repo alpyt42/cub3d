@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:51:44 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/11 16:44:47 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:14:22 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	*fill_colors(t_data *d, int i, char *val)
 	{
 		j = -1;
 		val = search_dico(keys[i], d);
-		dprintf(2, "%s : %s\n", keys[i], val);
 		if (!val || !val[0] || count_char(val, ',') != 2
 			|| val[0] == ',' || val[ft_strlen(val) - 1] == ',')
 			return (error(COL_ERROR));
@@ -50,7 +49,6 @@ static void	*fill_ids(t_data *d)
 		val = search_dico(keys[i], d);
 		if (!val)
 			return (error(TOO_LOW_IDS));
-		dprintf(2, "%s : %s\n", keys[i], val);
 		d->imgs[i].ptr = NULL;
 		if (val != NULL)
 			d->imgs[i].ptr = mlx_xpm_file_to_image(d->mlx->mlx, \

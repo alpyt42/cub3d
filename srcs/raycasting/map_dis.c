@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_dis.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:16:51 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/13 17:16:56 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:11:14 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	display_map(t_data *d)
 
 	pos[0] = d->player->y;
 	pos[1] = d->player->x;
+	size = 0;
 	if (d->sizex > 40 && d->sizey > 40)
 		size = 26;
 	else if (d->sizex <= 5 || d->sizey <= 5)
