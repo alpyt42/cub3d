@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/17 13:09:06 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:40:58 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ void	*set_color_img(t_data *d)
 
 void	*start_set(t_data *d, t_mlx *mlx)
 {
-	d->player = malloc(sizeof(t_player));
-	if (!d->player)
-		return (error(MALLOC_ERR));
+	d->player = NULL;
 	gettimeofday(&d->last_time, NULL);
 	d->ac = 0;
 	d->av = NULL;
@@ -51,8 +49,6 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	mlx->mlx = NULL;
 	mlx->img = NULL;
 	mlx->win = NULL;
-	mlx->width = 1600;
-	mlx->height = 1000;
 	return (NULL);
 }
 

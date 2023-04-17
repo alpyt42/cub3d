@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/17 13:09:31 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:45:10 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,11 @@ void	*set_all(t_data *d)
 	get_size_map(d);
 	d->floor = rgb_to_hex(d->col[F][0], d->col[F][1], d->col[F][2]);
 	d->ceiling = rgb_to_hex(d->col[C][0], d->col[C][1], d->col[C][2]);
-	d->imgback = create_img(d->mlx, d->mlx->width, d->mlx->height);
-	d->imgwall = create_img(d->mlx, d->mlx->width, d->mlx->height);
+	d->imgback = create_img(d->mlx, WIN_WIDTH, WIN_HEIGHT);
+	d->imgwall = create_img(d->mlx, WIN_WIDTH, WIN_HEIGHT);
+	d->player = malloc(sizeof(t_player));
+	if (!d->player)
+		return (error(MALLOC_ERR));
 	get_pos_player(d);
 	start_player_orientation(d);
 	start_plan_vector(d);

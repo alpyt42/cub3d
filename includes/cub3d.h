@@ -89,6 +89,8 @@
 # define NB_ARG			"The number of arguments is wrong : one map (*.cub)"
 # define MAP_EXT		"The map must have the .cub extension"
 # define DELAY_MS		50
+# define WIN_WIDTH		1600
+# define WIN_HEIGHT		1000
 
 /*-------COLORS---------------------------*/
 

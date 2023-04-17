@@ -18,9 +18,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	if (data == NULL || data->mlx == NULL || data->mlx->addr == NULL)
 		return ;
-	if (x < 0 || x >= data->mlx->width || y < 0 || y >= data->mlx->height)
+	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return ;
-	dst = &data->mlx->addr[(y * data->mlx->width) * 4 + x * 4];
+	dst = &data->mlx->addr[(y * WIN_WIDTH) * 4 + x * 4];
 	if (*(int *)dst != color)
 		*(unsigned int *)dst = color;
 }
@@ -31,13 +31,13 @@ int	floor_ceiling(t_data *d)
 	int	y;
 
 	x = 0;
-	while (x < d->mlx->width)
+	while (x < WIN_WIDTH)
 	{
 		y = 0;
-		while (y < d->mlx->height / 2)
+		while (y < WIN_HEIGHT / 2)
 		{
 			my_mlx_pixel_put(d, x, y, d->ceiling);
-			my_mlx_pixel_put(d, x, y + d->mlx->height / 2, d->floor);
+			my_mlx_pixel_put(d, x, y + WIN_HEIGHT / 2, d->floor);
 			y++;
 		}
 		x++;

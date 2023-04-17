@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:33:40 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/17 13:18:57 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:35:24 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	ray_to_wall(t_data *d)
 
 void	size_wall(t_data *d)
 {
-	d->ray->height = (int)(d->mlx->height / (d->ray->p_to_wall_dist));
-	d->ray->draw_start = fmax((d->ray->height / 2) + (d->mlx->height / 2), 0);
-	d->ray->draw_end = fmin(-(d->ray->height / 2) + (d->mlx->height / 2),
-			d->mlx->height - 1);
+	d->ray->height = (int)(WIN_HEIGHT / (d->ray->p_to_wall_dist));
+	d->ray->draw_start = fmax((d->ray->height / 2) + (WIN_HEIGHT / 2), 0);
+	d->ray->draw_end = fmin(-(d->ray->height / 2) + (WIN_HEIGHT / 2),
+			WIN_HEIGHT - 1);
 }
 
 int	init_ray(t_data *d, float i)
@@ -78,7 +78,7 @@ int	init_ray(t_data *d, float i)
 	d->ray->hit = 0;
 	d->ray->mapx = (int)d->player->x;
 	d->ray->mapy = (int)d->player->y;
-	d->ray->camerax = 2 * i / d->mlx->width - 1.0;
+	d->ray->camerax = 2 * i / WIN_WIDTH - 1.0;
 	d->ray->raydirx = d->player->dirx + d->player->planx * d->ray->camerax;
 	d->ray->raydiry = d->player->diry + d->player->plany * d->ray->camerax;
 	d->ray->deltadistx = sqrt(1 + (d->ray->raydiry * d->ray->raydiry)
@@ -94,7 +94,7 @@ int	raycasting(t_data *d)
 
 	x = 0;
 	floor_ceiling(d);
-	while (x < d->mlx->width)
+	while (x < WIN_WIDTH)
 	{
 		init_ray(d, x);
 		init_step(d);

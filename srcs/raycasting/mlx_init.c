@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:56:24 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 16:41:18 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:34:46 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*start_mlx(t_data *d, t_mlx *mlx)
 {
-	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "CUB3D");
+	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "CUB3D");
 	if (!mlx->win)
 		return (error(MLX_WIN_FAIL));
-	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
+	mlx->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp,
 			&mlx->size_line, &mlx->endian);
 	raycasting(d);
