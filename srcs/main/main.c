@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:19:35 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/14 10:43:09 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:37:12 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		return (ft_free_data(&d), 1);
 	if (!start_mlx(&d, &mlx))
 		return (ft_free_data(&d), 1);
-	mlx_hook(d.mlx->win, 2, 1L << 0, handle_input, &d);
+	mlx_hook(d.mlx->win, 2, 1L << 0, handle_input_time, &d);
 	mlx_hook(d.mlx->win, 17, 1L << 0, ft_free_data, &d);
 	mlx_loop(mlx.mlx);
 	return (0);

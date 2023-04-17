@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/17 10:25:47 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:25:36 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	*start_set(t_data *d, t_mlx *mlx)
 	d->player = malloc(sizeof(t_player));
 	if (!d->player)
 		return (error(MALLOC_ERR));
+	gettimeofday(&d->last_time, NULL);
 	d->ac = 0;
 	d->av = NULL;
 	d->fd_map = -1;

@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:16:51 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/14 14:11:14 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:57:20 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static void	draw_arrow_player(t_data *d, int x, int y, int color)
 			pixel_y = y * 10 + dy + 22;
 			if (d->player->orientation == 'W' && dx >= 5)
 				my_mlx_pixel_put(d, pixel_x, pixel_y, color);
-			else if (d->player->orientation == 'E' && dx <= 10 - 5)
+			else if (d->player->orientation == 'E' && dx <= 5)
 				my_mlx_pixel_put(d, pixel_x, pixel_y, color);
 			else if (d->player->orientation == 'N' && dy >= 5)
 				my_mlx_pixel_put(d, pixel_x, pixel_y, color);
-			else if (d->player->orientation == 'S' && dy <= 10 - 5)
+			else if (d->player->orientation == 'S' && dy <= 5)
 				my_mlx_pixel_put(d, pixel_x, pixel_y, color);
 			else
 				my_mlx_pixel_put(d, pixel_x, pixel_y, 0x00FF00);

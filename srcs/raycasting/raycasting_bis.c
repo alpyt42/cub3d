@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:44:56 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/13 17:46:15 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:45:29 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,18 @@ void	hit_point(t_data *d)
 		d->ray->wallx *= -1;
 	if (d->ray->wally < 0)
 		d->ray->wally *= -1;
+}
+
+int	handle_input_time(int keysym, t_data *d)
+{
+	struct timeval	current_time;
+
+	gettimeofday(&current_time, NULL);
+	if ((current_time.tv_sec - d->last_time.tv_sec) * 1000
+		+ (current_time.tv_usec - d->last_time.tv_usec) / 1000 >= DELAY_MS)
+	{
+		handle_input(keysym, d);
+		d->last_time = current_time;
+	}
+	return (0);
 }

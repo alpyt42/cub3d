@@ -88,6 +88,7 @@
 # define MAP_ERR		"The error in map (it needs to be in one block)"
 # define NB_ARG			"The number of arguments is wrong : one map (*.cub)"
 # define MAP_EXT		"The map must have the .cub extension"
+# define DELAY_MS		50
 
 /*-------COLORS---------------------------*/
 
@@ -131,6 +132,7 @@ struct s_data
 	int			**col;
 	int			sizex;
 	int			sizey;
+	struct		timeval last_time;
 	uint32_t	ceiling;
 	uint32_t	floor;
 	t_img		*imgback;
@@ -230,6 +232,7 @@ int			handle_input(int keysym, t_data *d);
 t_img		*create_img(t_mlx *mlx, int width, int height);
 void		display_map(t_data *d);
 void		hit_point(t_data *d);
+int			handle_input_time(int keysym, t_data *d);
 
 /*--utils------------------------------*/
 

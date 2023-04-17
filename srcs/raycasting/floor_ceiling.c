@@ -21,7 +21,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	if (x < 0 || x >= data->mlx->width || y < 0 || y >= data->mlx->height)
 		return ;
 	dst = &data->mlx->addr[(y * data->mlx->width) * 4 + x * 4];
-	*(unsigned int *)dst = color;
+	if (*(int *)dst != color)
+		*(unsigned int *)dst = color;
 }
 
 int	floor_ceiling(t_data *d)
