@@ -245,6 +245,5 @@ void		*check_arr_type(char **str);
 int			count_char(char *val, char c);
 char		*rm_ret_gnl(int fd);
 void		get_size_map(t_data *d);
-void		display_player(t_player *p);
 
 #endif

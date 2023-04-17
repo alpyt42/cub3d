@@ -6,13 +6,13 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:33:40 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/17 18:35:24 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:17:51 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_step(t_data *d)
+static void	init_step(t_data *d)
 {
 	if (d->ray->raydirx < 0)
 	{
@@ -40,7 +40,7 @@ void	init_step(t_data *d)
 	}
 }
 
-void	ray_to_wall(t_data *d)
+static void	ray_to_wall(t_data *d)
 {
 	while (d->ray->hit == 0)
 	{
@@ -60,12 +60,14 @@ void	ray_to_wall(t_data *d)
 			d->ray->hit = 1;
 	}
 	if (d->ray->side == 0)
-		d->ray->p_to_wall_dist = (d->ray->sidedistx - d->ray->deltadistx);
+		d->ray->p_to_wall_dist = (d->ray->mapx - d->player->x
+				+ (1 - d->ray->stepx) / 2) / d->ray->raydirx;
 	else
-		d->ray->p_to_wall_dist = (d->ray->sidedisty - d->ray->deltadisty);
+		d->ray->p_to_wall_dist = (d->ray->mapy - d->player->y
+				+ (1 - d->ray->stepy) / 2) / d->ray->raydiry;
 }
 
-void	size_wall(t_data *d)
+static void	size_wall(t_data *d)
 {
 	d->ray->height = (int)(WIN_HEIGHT / (d->ray->p_to_wall_dist));
 	d->ray->draw_start = fmax((d->ray->height / 2) + (WIN_HEIGHT / 2), 0);
@@ -73,7 +75,7 @@ void	size_wall(t_data *d)
 			WIN_HEIGHT - 1);
 }
 
-int	init_ray(t_data *d, float i)
+static int	init_ray(t_data *d, float i)
 {
 	d->ray->hit = 0;
 	d->ray->mapx = (int)d->player->x;
