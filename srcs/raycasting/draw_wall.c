@@ -6,7 +6,7 @@
 /*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:15:29 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/17 12:29:10 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:52:30 by amontalb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	draw_wall(t_data *d, int x)
 		else if (d->ray->side == 0)
 			draw_wall_bis(d, i, N, 0);
 		else if (d->ray->raydiry > 0)
-			draw_wall_bis(d, i, W, 1);
-		else
 			draw_wall_bis(d, i, E, 1);
+		else
+			draw_wall_bis(d, i, W, 1);
 		i[1]++;
 		i[2]++;
 	}
