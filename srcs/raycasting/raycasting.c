@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amontalb <amontalb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:33:40 by amontalb          #+#    #+#             */
-/*   Updated: 2023/04/17 12:13:16 by amontalb         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:18:57 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,6 @@ void	size_wall(t_data *d)
 
 int	init_ray(t_data *d, float i)
 {
-	t_ray	*ray;
-
-	ray = (t_ray *)malloc(sizeof(t_ray));
-	d->ray = ray;
 	d->ray->hit = 0;
 	d->ray->mapx = (int)d->player->x;
 	d->ray->mapy = (int)d->player->y;
@@ -89,7 +85,7 @@ int	init_ray(t_data *d, float i)
 			/ (d->ray->raydirx * d->ray->raydirx));
 	d->ray->deltadisty = sqrt(1 + (d->ray->raydirx * d->ray->raydirx)
 			/ (d->ray->raydiry * d->ray->raydiry));
-	return (0);
+	return (1);
 }
 
 int	raycasting(t_data *d)
@@ -106,7 +102,6 @@ int	raycasting(t_data *d)
 		size_wall(d);
 		hit_point(d);
 		draw_wall(d, x);
-		free(d->ray);
 		x++;
 	}
 	return (0);

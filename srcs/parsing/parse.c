@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:20:20 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 17:53:11 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:09:31 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ void	*set_all(t_data *d)
 	if (!d->imgback || !d->imgwall)
 		return (NULL);
 	set_img_mlx(d);
+	d->ray = (t_ray *)malloc(sizeof(t_ray));
+	if (!d->ray)
+		return (error(MALLOC_ERR));
 	return ("");
 }

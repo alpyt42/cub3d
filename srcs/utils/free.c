@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:08:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/13 16:41:26 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:10:31 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ int	ft_free_data(t_data *d)
 		free_mlx(d->mlx);
 	if (d->player)
 		free(d->player);
+	if (d->ray)
+		free(d->ray);
 	exit(0);
 }
