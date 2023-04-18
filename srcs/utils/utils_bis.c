@@ -6,17 +6,16 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 13:50:44 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/17 14:55:03 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:52:45 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*rm_ret_gnl(int fd)
+char	*rm_ret_gnl(int fd, char *gnl)
 {
-	char	*gnl;
-
-	gnl = get_next_line(fd);
+	if (!gnl)
+		gnl = get_next_line(fd);
 	while (gnl && gnl[0] && gnl[0] == '\n')
 	{
 		free(gnl);

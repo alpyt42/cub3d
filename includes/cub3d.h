@@ -243,7 +243,7 @@ int			ft_free_data(t_data *d);
 void		display_dico(t_list *h_dico);
 void		*check_arr_type(char **str);
 int			count_char(char *val, char c);
-char		*rm_ret_gnl(int fd);
+char		*rm_ret_gnl(int fd, char *gnl);
 void		get_size_map(t_data *d);
 
 #endif

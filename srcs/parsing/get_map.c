@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:52:30 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/07 13:17:53 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:53:32 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	*get_map(t_data *d)
 	char	*tmp;
 	char	*map;
 
-	gnl = rm_ret_gnl(d->fd_map);
+	gnl = NULL;
+	gnl = rm_ret_gnl(d->fd_map, gnl);
 	if (!gnl)
 		return (error(MAP_MISSING));
 	map = NULL;
@@ -56,9 +57,9 @@ void	*get_map(t_data *d)
 		free(gnl);
 		gnl = get_next_line(d->fd_map);
 	}
-	gnl = rm_ret_gnl(d->fd_map);
+	gnl = rm_ret_gnl(d->fd_map, gnl);
 	if (gnl)
-		return (free(map), error(MAP_ERR));
+		return (free(map), free(gnl), error(MAP_ERR));
 	d->map = ft_split(map, '\n');
 	free(map);
 	if (!d->map)
