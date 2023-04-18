@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:08:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/17 13:10:31 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:37:44 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ static void	free_imgs(t_data *d)
 
 	i = -1;
 	while (++i < 4)
-		mlx_destroy_image(d->mlx->mlx, d->imgs[i].ptr);
-	free(d->imgs);
+	{
+		if (d->imgs[i].ptr)
+			mlx_destroy_image(d->mlx->mlx, d->imgs[i].ptr);
+	}
+	if (d->imgs)
+		free(d->imgs);
 	if (d->imgback)
 	{
 		mlx_destroy_image(d->mlx->mlx, d->imgback->ptr);

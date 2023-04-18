@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/17 18:40:58 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:39:42 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	*set_color_img(t_data *d)
 {
+	int	i;
+
+	i = -1;
 	d->col = (int **)malloc(sizeof(int *) * 2);
 	if (!d->col)
 		return (error(MALLOC_ERR));
@@ -26,6 +29,8 @@ void	*set_color_img(t_data *d)
 	d->imgs = malloc(sizeof(t_img) * 4);
 	if (!d->imgs)
 		return (error(MALLOC_ERR));
+	while (++i < 4)
+		d->imgs[i].ptr = NULL;
 	return ("");
 }
 
