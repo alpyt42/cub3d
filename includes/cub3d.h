@@ -127,23 +127,23 @@ struct s_img
 
 struct s_data
 {
-	int			ac;
-	char		**av;
-	char		**map;
-	int			fd_map;
-	int			**col;
-	int			sizex;
-	int			sizey;
-	struct		timeval last_time;
-	uint32_t	ceiling;
-	uint32_t	floor;
-	t_img		*imgback;
-	t_img		*imgwall;
-	t_list		*h_dico;
-	t_img		*imgs;
-	t_mlx		*mlx;
-	t_player	*player;
-	t_ray		*ray;
+	int				ac;
+	char			**av;
+	char			**map;
+	int				fd_map;
+	int				**col;
+	int				sizex;
+	int				sizey;
+	struct timeval	last_time;
+	uint32_t		ceiling;
+	uint32_t		floor;
+	t_img			*imgback;
+	t_img			*imgwall;
+	t_list			*h_dico;
+	t_img			*imgs;
+	t_mlx			*mlx;
+	t_player		*player;
+	t_ray			*ray;
 };
 
 struct s_dico
