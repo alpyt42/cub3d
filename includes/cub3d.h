@@ -17,23 +17,10 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/mlx_linux/mlx.h"
-# include <fcntl.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <signal.h>
-# include <sys/wait.h>
 # include <sys/time.h>
-# include <dirent.h>
-# include <sys/ioctl.h>
 # include <errno.h>
 # include <unistd.h>
-# include <stdlib.h>
-# include <errno.h>
-# include <fcntl.h>
 # include <string.h>
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <math.h>
 
 /*-----------KEY----------------------*/
@@ -240,7 +227,6 @@ int			handle_input_time(int keysym, t_data *d);
 
 void		*error(char *str);
 int			ft_free_data(t_data *d);
-void		display_dico(t_list *h_dico);
 void		*check_arr_type(char **str);
 int			count_char(char *val, char c);
 char		*rm_ret_gnl(int fd, char *gnl);

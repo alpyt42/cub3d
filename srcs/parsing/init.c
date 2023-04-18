@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:26:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/18 11:39:42 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:21:53 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ void	*set_color_img(t_data *d)
 	d->col[C] = NULL;
 	d->col[F] = NULL;
 	d->col[C] = (int *)malloc(sizeof(int) * 3);
+	if (!d->col[C])
+		return (free(d->col), error(MALLOC_ERR));
 	d->col[F] = (int *)malloc(sizeof(int) * 3);
-	if (!d->col[C] || !d->col[F])
-		return (error(MALLOC_ERR));
+	if (!d->col[F])
+		return (free(d->col[C]), free(d->col), error(MALLOC_ERR));
 	d->imgs = malloc(sizeof(t_img) * 4);
 	if (!d->imgs)
-		return (error(MALLOC_ERR));
+		return (free(d->col[C]), free(d->col[F]), free(d->col),
+			error(MALLOC_ERR));
 	while (++i < 4)
 		d->imgs[i].ptr = NULL;
 	return ("");
