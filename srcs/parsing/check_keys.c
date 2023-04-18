@@ -6,11 +6,29 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:51:44 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/04/14 14:14:22 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:55:07 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	*check_color(t_data *d)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i <= 1)
+	{
+		j = -1;
+		while (++j < 3)
+		{
+			if (d->col[i][j] > 255)
+				return (error(COL_ERROR));
+		}
+	}
+	return ("");
+}
 
 static void	*fill_colors(t_data *d, int i, char *val)
 {
@@ -68,6 +86,8 @@ void	*check_keys(t_data *d)
 	if (!fill_ids(d))
 		return (NULL);
 	if (!fill_colors(d, -1, NULL))
+		return (NULL);
+	if (!check_color(d))
 		return (NULL);
 	return ("");
 }
